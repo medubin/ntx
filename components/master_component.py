@@ -1,6 +1,7 @@
 from components.files import Files
 from components.input_bar import InputBar
 from components.open_file import OpenFile
+from components.header import Header
 
 class MasterComponent:
     def __init__(self, store, term):
@@ -10,8 +11,11 @@ class MasterComponent:
         self.files = Files(store, term)
         self.input_bar = InputBar(store, term)
         self.open_file = OpenFile(store, term)
+        self.header = Header(store, term)
     
     def render(self):
+        self.header.render()
         self.files.render()
         self.input_bar.render()
         self.open_file.render()
+        

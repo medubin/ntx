@@ -15,7 +15,6 @@ class Browser:
         self.service = MasterService(self.store, self.term)
         self.master_input_listener = MasterInputListener(self.store, self.term, self.service)
         
-    
     def startup(self):
         self.service.directory_service.create_base_directory()
         print(self.term.enter_fullscreen())
