@@ -20,6 +20,9 @@ class Browser:
         self.service.directory_service.create_base_directory()
         print(self.term.enter_fullscreen())
 
+    def exit(self):
+        print(self.term.exit_fullscreen)
+
     def run(self):
         while(True):
             self.__print()
