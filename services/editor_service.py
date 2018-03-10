@@ -17,8 +17,8 @@ class EditorService:
         with self.service.directory_service.open_file(file) as f:
             f.flush()
             call([EDITOR, f.name])
-            f.seek(0)
-            f.read()
+            f.seek(0) # test if this is necessary
+            f.read() # test if this is necessary
 
 
 

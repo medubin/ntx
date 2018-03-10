@@ -20,6 +20,8 @@ class BrowseInput:
             self.view_file()
         elif input == ['e']:
             self.service.editor_service.open_selected_file()
+            self.view_file()
+
 
     def scroll_up(self):
         if self.store.selected_file > -1:
