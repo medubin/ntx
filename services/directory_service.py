@@ -29,7 +29,7 @@ class DirectoryService:
 
     def get_file_contents(self, file):
         with open(self.base_directory + '/' + file) as f:
-            return f.read()
+            return self.service.markdown_service.parse_markdown(f.read())
 
 
 
