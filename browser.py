@@ -21,6 +21,7 @@ class Browser:
         print(self.term.enter_fullscreen())
 
     def exit(self):
+        print(self.term.clear)
         print(self.term.exit_fullscreen)
 
     def run(self):
