@@ -17,9 +17,9 @@ class BrowseInput:
         elif input == ['n']:
             self.store.state = self.store.STATE_NEW    
         elif input == Input.ENTER:
-            # self.service.markdown_service
-            # print(self.store.files[self.store.selected_file])
             self.view_file()
+        elif input == ['e']:
+            self.service.editor_service.open_selected_file()
 
     def scroll_up(self):
         if self.store.selected_file > -1:

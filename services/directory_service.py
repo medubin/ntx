@@ -15,7 +15,7 @@ class DirectoryService:
             os.makedirs(self.base_directory)
     
     def create_new_note(self):
-        file = open(self.base_directory + '/' + self.store.write_buffer + ".md","w") 
+        file = self.open_file(self.store.write_buffer + ".md","w") 
         file.close() 
         self.store.write_buffer = ''
         self.store.files = os.listdir(self.base_directory)
@@ -28,8 +28,11 @@ class DirectoryService:
         return self.store.files[self.store.selected_file]
 
     def get_file_contents(self, file):
-        with open(self.base_directory + '/' + file) as f:
+        with self.open_file(file) as f:
             return self.service.markdown_service.parse_markdown(f.read())
+    
+    def open_file(self, file, type ='r'):
+        return open(self.base_directory + '/' + file, type)
 
 
 
