@@ -1,9 +1,8 @@
+import urwid
 class Header:
-    def __init__(self, store, term):
+    def __init__(self, store):
         self.store = store
-        self.term = term
     
     def render(self):
-        width = self.term.width
-        padding = int((width - 3) / 2)
-        print(self.term.green_on_blue(' ' * padding + 'ntx' + ' ' * padding))
+        header_text = urwid.Text("ntx", wrap='clip')
+        return urwid.AttrMap(header_text, 'header')

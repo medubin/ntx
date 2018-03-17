@@ -1,13 +1,15 @@
+import urwid
 class Files:
-    def __init__(self, store, term):
+    def __init__(self, store):
         self.store = store
-        self.term = term
 
     def render(self):
-        for index, file in enumerate(self.store.files):
-            if index == self.store.selected_file:
-                print(self.term.bold_on_green(file))
-            else:
-                print(self.term.bold(file))
-
+        contents = []
+        for file in self.store.files:
+            content = urwid.Text(file)
+            contents.append(urwid.AttrMap(content, None, 'reveal focus'))
+         
+        listbox = urwid.ListBox(urwid.SimpleFocusListWalker(contents))
+        listbox.set_focus(0)
+        return listbox
 

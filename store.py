@@ -6,6 +6,6 @@ class Store:
         self.opened_file = ''
         self.state = self.STATE_BROWSE
         self.write_buffer = ''
-        self.selected_file = -1
+        self.selected_file = 0
         self.files = []
         

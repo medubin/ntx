@@ -4,9 +4,8 @@ from pathlib import Path
 
 class DirectoryService:
     base_directory = str(Path.home()) + '/.ntx'
-    def __init__(self, store, term, service):
+    def __init__(self, store, service):
         self.store = store
-        self.term = term
         self.service = service
         self.store.files = os.listdir(self.base_directory)
     
@@ -33,14 +32,3 @@ class DirectoryService:
     
     def open_file(self, file, type ='r'):
         return open(self.base_directory + '/' + file, type)
-
-
-
-
-
-    
-
-
-
-
-    

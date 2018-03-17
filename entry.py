@@ -3,11 +3,14 @@ from browser import Browser
 
 browser = Browser()
 
-browser.startup()
+# browser.startup()
 
-try:
-    browser.run()
-except KeyboardInterrupt:
-    browser.exit()
+# try:
+browser.run()
+# except KeyboardInterrupt:
+    # browser.exit()
+
+
+    
 
 

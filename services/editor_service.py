@@ -2,9 +2,8 @@ import sys, tempfile, os
 from subprocess import call
 
 class EditorService:
-    def __init__(self, store, term, service):
+    def __init__(self, store, service):
         self.store = store
-        self.term = term
         self.service = service
 
     def open_selected_file(self):

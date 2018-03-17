@@ -1,17 +1,15 @@
 from constants.input import Input
 class NewFileInput:
-    def __init__(self, store, term, service):
+    def __init__(self, store, service, components):
         self.store = store
-        self.term = term
         self.service = service
+        self.components = components
 
     def listen(self, input, state):
         if state != self.store.STATE_NEW:
             return
-        
-        if input[0].isalpha() or input[0].isdigit():
-            self.store.write_buffer += input[0]
-        elif input == Input.DELETE:
-            self.store.write_buffer = self.store.write_buffer[:-1]
-        elif input == Input.ENTER:
+
+        if input == 'enter':
+            self.store.write_buffer = self.components.input_bar.get_edit_text()
             self.service.directory_service.create_new_note()
+            self.components.input_bar.set_edit_text('')
