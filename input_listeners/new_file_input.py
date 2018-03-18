@@ -9,8 +9,13 @@ class NewFileInput:
         if state != self.store.STATE_NEW:
             return
 
-        if input == 'enter':
-            self.store.write_buffer = self.components.input_bar.get_edit_text()
+        if len(input) == 1 and (input.isalpha() or input.isdigit()):
+            self.store.write_buffer += input
+            self.components.input_bar.set_text(self.store.write_buffer)
+        elif input == 'backspace':
+            self.store.write_buffer = self.store.write_buffer[:-1]
+            self.components.input_bar.set_text(self.store.write_buffer)
+        elif input == 'enter':
             self.service.directory_service.create_new_note()
-            self.components.input_bar.set_edit_text('')
-            
+            self.components.input_bar.set_text('')
+

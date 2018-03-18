@@ -4,7 +4,8 @@ class InputBar:
         self.store = store
 
     def render(self):
-        return urwid.Edit("")
+        # return urwid.Text("")
+        return urwid.Text("")
 
 
 

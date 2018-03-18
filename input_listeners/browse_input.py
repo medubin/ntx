@@ -16,7 +16,7 @@ class BrowseInput:
             self.scroll_down()
         elif input == 'n':
             self.store.state = self.store.STATE_NEW  
-            self.components.input_bar.set_edit_pos(0)  
+            # self.components.input_bar.set_edit_pos(0)  
         elif input == 'enter':
             self.view_file()
         elif input == 'e':
