@@ -20,13 +20,8 @@ class Browser:
         self.service.directory_service.create_base_directory()
 
     def run(self):
-        loop = urwid.MainLoop(
-            self.master_component.render(), 
-            self.master_component.palette, 
-            input_filter=self.__input_filter,
-            unhandled_input=self.master_input_listener.listen)
-        loop.run()
-
+        self.master_component.run(self.master_input_listener)
+        
     def __input_filter(self, input, raw):
         return input
 

@@ -13,3 +13,4 @@ class NewFileInput:
             self.store.write_buffer = self.components.input_bar.get_edit_text()
             self.service.directory_service.create_new_note()
             self.components.input_bar.set_edit_text('')
+            
