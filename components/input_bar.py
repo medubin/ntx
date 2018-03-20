@@ -2,9 +2,9 @@ import urwid
 class InputBar:
     def __init__(self, store):
         self.store = store
+        self.widget = self.__render()
 
-    def render(self):
-        # return urwid.Text("")
+    def __render(self):
         return urwid.Text("")
 
 

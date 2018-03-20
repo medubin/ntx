@@ -26,15 +26,15 @@ class BrowseInput:
     def scroll_up(self):
         if self.store.selected_file > 0:
             self.store.selected_file -= 1 
-            self.components.files.focus_position = self.store.selected_file
+            self.components.files.widget.focus_position = self.store.selected_file
 
     def scroll_down(self):
         if self.store.selected_file < len(self.store.files) - 1:
             self.store.selected_file += 1
-            self.components.files.focus_position = self.store.selected_file
+            self.components.files.widget.focus_position = self.store.selected_file
 
     def view_file(self):
         file = self.service.directory_service.get_selected_file()
         if (file is not None):
             self.store.opened_file = self.service.directory_service.get_file_contents(file)
-            self.components.open_file.set_text(self.store.opened_file)
+            self.components.open_file.widget.set_text(self.store.opened_file)
