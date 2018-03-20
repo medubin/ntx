@@ -4,6 +4,7 @@ from pathlib import Path
 
 class DirectoryService:
     base_directory = str(Path.home()) + '/.ntx'
+
     def __init__(self, store, service):
         self.store = store
         self.service = service
@@ -14,7 +15,7 @@ class DirectoryService:
             os.makedirs(self.base_directory)
     
     def create_new_note(self):
-        file = self.open_file(self.store.write_buffer + ".md","w") 
+        file = self.open_file(self.store.write_buffer + ".md","a") 
         file.close() 
         self.store.write_buffer = ''
         self.store.files = os.listdir(self.base_directory)

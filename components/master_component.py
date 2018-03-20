@@ -17,7 +17,6 @@ class MasterComponent:
     
     def render(self):
         columns = urwid.Columns([self.files.widget, urwid.Filler(self.open_file.widget)])
-
         return urwid.Frame(columns, self.header.widget, self.input_bar.widget)
 
     def run(self, master_input_listener):
