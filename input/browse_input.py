@@ -20,6 +20,8 @@ class BrowseInput:
             self.env.service.directory.view_file_or_folder()
         elif input == 'e':
             self.env.service.editor.edit_file()
+        elif input == 'left':
+            self.env.service.directory.leave_folder()
 
     def scroll_up(self):
         if self.env.store.selected_file > 0:

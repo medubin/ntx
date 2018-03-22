@@ -23,8 +23,15 @@ class DirectoryService:
         self.env.store.directory = self.env.store.directory + '/' + self.get_selected_file()
         self.env.store.selected_file = 0
         self.env.service.state.set_to_browse()
+    
+    def leave_folder(self):
+        if len(self.env.store.directory) > 0:
+            self.env.store.directory = '/'.join(self.env.store.directory.split('/')[:-1])
+            self.env.store.selected_file = 0
+            self.env.service.state.set_to_browse()
 
     def directory(self):
         return self.base_directory + self.env.store.directory
+
 
 
