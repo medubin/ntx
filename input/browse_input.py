@@ -17,7 +17,7 @@ class BrowseInput:
         elif input == 'f':
             self.env.store.state = self.env.store.STATE_NEW_FOLDER
         elif input == 'enter':
-            self.view_file()
+            self.env.service.directory.view_file_or_folder()
         elif input == 'e':
             self.env.service.editor.edit_file()
 
@@ -30,9 +30,3 @@ class BrowseInput:
         if self.env.store.selected_file < len(self.env.store.files) - 1:
             self.env.store.selected_file += 1
             self.env.component.files.widget.focus_position = self.env.store.selected_file
-
-    def view_file(self):
-        file = self.env.service.directory.get_selected_file()
-        if (file is not None):
-            self.env.store.opened_file = self.env.service.file_content.get(file)
-            self.env.component.open_file.widget.set_text(self.env.store.opened_file)

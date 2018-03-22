@@ -19,8 +19,6 @@ class NewFileInput:
                 self.env.service.directory_create.note()
             elif self.env.store.state == self.env.store.STATE_NEW_FOLDER:
                 self.env.service.directory_create.folder()
-            self.env.component.input_bar.widget.set_text('')
-            self.env.component.files.content[:] = self.env.component.files.create_files()
         elif input == 'esc':
             self.env.component.input_bar.widget.set_text('')
             self.env.store.state = self.env.store.STATE_BROWSE
