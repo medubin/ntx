@@ -9,7 +9,8 @@ class StateService:
         self.env.store.state = self.env.store.STATE_BROWSE 
         self.env.component.input_bar.widget.set_text('')
         self.env.component.files.content[:] = self.env.component.files.create_files()
-        
+        self.env.component.files.widget.set_focus(0)
+
 
 
     
