@@ -1,7 +1,7 @@
 import urwid
 class Files:
-    def __init__(self, store):
-        self.store = store
+    def __init__(self, env):
+        self.env = env
         self.content = urwid.SimpleFocusListWalker(self.create_files())
         self.widget = self.__render()
         
@@ -13,7 +13,7 @@ class Files:
 
     def create_files(self):
         contents = []
-        for file in self.store.files:
+        for file in self.env.store.files:
             content = urwid.Text(file)
             contents.append(urwid.AttrMap(content, None, 'reveal focus'))
         return contents

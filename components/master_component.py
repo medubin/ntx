@@ -8,25 +8,24 @@ from components.header import Header
 class MasterComponent:
     palette = [('header', 'light green', 'dark blue'),
     ('reveal focus', 'black', 'dark cyan', 'standout')]
-    def __init__(self, store):
-        self.store = store
-        self.files = Files(self.store)
-        self.header = Header(self.store)
-        self.input_bar = InputBar(self.store)
-        self.open_file = OpenFile(self.store)
+    def __init__(self, env):
+        self.env = env
+        self.files = Files(self.env)
+        self.header = Header(self.env)
+        self.input_bar = InputBar(self.env)
+        self.open_file = OpenFile(self.env)
     
     def render(self):
         columns = urwid.Columns([self.files.widget, urwid.Filler(self.open_file.widget)])
         return urwid.Frame(columns, self.header.widget, self.input_bar.widget)
 
-    def run(self, master_input_listener):
-        self.master_input_listener = master_input_listener
+    def run(self):
 
         self.loop = urwid.MainLoop(
             self.render(), 
             self.palette, 
             input_filter=self.__input_filter,
-            unhandled_input=self.master_input_listener.listen)
+            unhandled_input=self.env.input.listen)
         self.loop.run()
 
     def __input_filter(self, input, raw):

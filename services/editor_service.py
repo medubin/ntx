@@ -2,18 +2,19 @@ import sys, tempfile, os
 from subprocess import call
 
 class EditorService:
-    def __init__(self, store, service):
-        self.store = store
-        self.service = service
+    def __init__(self, env):
+        self.env = env
+   
+    def edit_file(self):
+        file = self.env.service.directory.get_selected_file()
+        full_path = self.env.service.directory.base_directory + '/' + file
+        if not os.path.isdir(full_path):
+            self.__open_editor(file)
 
-    def open_selected_file(self):
-        file = self.service.directory_service.get_selected_file()
-        if (file is not None):
-            self.open_editor(file)
         
-    def open_editor(self, file):
+    def __open_editor(self, file):
         EDITOR = os.environ.get('EDITOR') if os.environ.get('EDITOR') else 'vim'
-        with self.service.directory_service.open_file(file) as f:
+        with self.env.service.file_content.open(file) as f:
             f.flush()
             call([EDITOR, f.name])
             f.seek(0) # test if this is necessary
