@@ -1,19 +1,15 @@
 from constants.state import State
-class SearchResultInput:
-    def __init__(self, env):
-        self.env = env
-
+from base.base_input import BaseInput
+class SearchResultInput(BaseInput):
     def listen(self, input, state):
         if state != State.SEARCH_RESULT:
             return
 
         if input == 'up':
-            self.env.service.directory.scroll_up()
-            self.env.service.directory.view_file_or_folder()
+            self.service.directory.scroll(-1)
         elif input == 'down':
-            self.env.service.directory.scroll_down()
-            self.env.service.directory.view_file_or_folder()
+            self.service.directory.scroll(1)
         elif input == 'enter' or input == 'right':
-            file = self.env.store.search_results[self.env.store.selected_file]
-            self.env.service.editor.edit_file(file)
+            file = self.store.search_results[self.store.selected_file]
+            self.service.editor.edit_file(file)
   

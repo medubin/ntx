@@ -1,25 +1,21 @@
 from constants.state import State
+from base.base_input import BaseInput
 
-class BrowseInput:
-    def __init__(self, env):
-        self.env = env
-
+class BrowseInput(BaseInput):
     def listen(self, input, state):
         if state != State.BROWSE:
             return
         if input == 'up':
-            self.env.service.directory.scroll(-1)
-            self.env.service.directory.view_file_or_folder()
+            self.service.directory.scroll(-1)
         elif input == 'down':
-            self.env.service.directory.scroll(1)
-            self.env.service.directory.view_file_or_folder()
+            self.service.directory.scroll(1)
         elif input == 'n':
-            self.env.service.state.new_note()
+            self.service.state.new_note()
         elif input == 'N':
-            self.env.service.state.new_folder()
+            self.service.state.new_folder()
         elif input == 'enter' or input == 'right':
-            self.env.service.directory.open_folder_or_file()
+            self.service.content.open()
         elif input == 'left':
-            self.env.service.directory.leave_folder()
+            self.service.folder_content.close()
         elif input == 'g':
-            self.env.service.state.search()
+            self.service.state.search()

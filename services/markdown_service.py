@@ -1,14 +1,9 @@
 import markdown
-# from mdx_gfm import GithubFlavoredMarkdownExtension
+# import re
+# from hashlib import md5
 
-import re
-from hashlib import md5
-
-from services.base_service import BaseService
+from base.base_service import BaseService
 class MarkdownService(BaseService):
-    def __init__(self, env):
-        self.env = env
-    
     def parse(self, text):
         return text
         # return markdown.markdown(text)

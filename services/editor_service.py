@@ -1,11 +1,8 @@
 import sys, tempfile, os
 from subprocess import call
-from services.base_service import BaseService
+from base.base_service import BaseService
 
 class EditorService(BaseService):
-    def __init__(self, env):
-        self.env = env
-   
     def edit_file(self, filepath):
         self.__open_editor(filepath)
         self.service.state.set_to_browse()

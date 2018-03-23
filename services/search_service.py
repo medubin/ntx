@@ -1,10 +1,7 @@
-from services.base_service import BaseService
+from base.base_service import BaseService
 import os
-from collections import deque
-class SearchService(BaseService):
-    def __init__(self, env):
-        self.env = env
 
+class SearchService(BaseService):
     def search(self, search_string):
         matches = self.search_files(search_string)
         self.store.search_results = matches

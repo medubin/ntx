@@ -5,23 +5,38 @@ from services.file_content_service import FileContentService
 from services.search_service import SearchService
 from services.markdown_service import MarkdownService
 from services.state_service import StateService
+from services.input_service import InputService
+from services.folder_content_service import FolderContentService
+from services.content_service import ContentService
 
 class MasterService:
     def __init__(self, env):
         self.env = env
-        self.directory = DirectoryService(env)
+        
+        self.content = ContentService(env)
         self.create = CreateService(env)
+        self.directory = DirectoryService(env)
         self.editor = EditorService(env)
         self.file_content = FileContentService(env)
+        self.folder_content = FolderContentService(env)
+        self.input = InputService(env)
         self.markdown = MarkdownService(env)
         self.state = StateService(env)
         self.search = SearchService(env)
+        
+        
+        
     
     def setup(self):
-        self.directory.setup()
         self.create.setup()
+        self.content.setup()
+        self.directory.setup()
         self.editor.setup()
         self.file_content.setup()
+        self.folder_content.setup()
+        self.input.setup()
         self.markdown.setup()
         self.state.setup()
         self.search.setup()
+        
+        

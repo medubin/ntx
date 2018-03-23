@@ -1,8 +1,8 @@
 
 from stores.master_store import MasterStore
-from components.master_component import MasterComponent
-from input.master_input import MasterInput
-from services.master_service import MasterService
+from master.master_component import MasterComponent
+from master.master_input import MasterInput
+from master.master_service import MasterService
 
 class Env:
     def __init__(self):
@@ -12,4 +12,5 @@ class Env:
         self.input = MasterInput(self)
 
         self.service.setup()
+        self.input.setup()
         

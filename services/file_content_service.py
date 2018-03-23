@@ -1,9 +1,6 @@
 
-from services.base_service import BaseService
+from base.base_service import BaseService
 class FileContentService(BaseService):
-    def __init__(self, env):
-        self.env = env
-
     def get(self, file):
         with self.open(file) as f:
             return self.service.markdown.parse(f.read())

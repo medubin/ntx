@@ -1,10 +1,7 @@
 import os
-from services.base_service import BaseService
+from base.base_service import BaseService
 from constants.state import State
 class StateService(BaseService):
-    def __init__(self, env):
-        self.env = env
-
     def set_to_browse(self):
         self.store.write_buffer = ''
         self.store.input_state = ''

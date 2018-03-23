@@ -12,6 +12,13 @@ class MasterInput:
         self.search = SearchInput(env)
         self.search_result = SearchResultInput(env)
 
+    def setup(self):
+        self.browse.setup()
+        self.new_file.setup()
+        self.search.setup()
+        self.search_result.setup()
+
+
     def listen(self, input):
         state = self.env.store.state #freeze the state to prevent ordering errors
         self.browse.listen(input, state)
