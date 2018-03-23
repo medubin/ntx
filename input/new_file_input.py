@@ -14,9 +14,11 @@ class NewFileInput:
             self.env.component.input_bar.set_text(self.env.store.write_buffer)
         elif input == 'enter':
             if self.env.store.state == self.env.store.STATE_NEW_FILE:
-                self.env.service.directory_create.note()
+                filepath = self.env.store.full_directory() + '/' + self.env.store.write_buffer + ".md"
+                self.env.service.create.note(filepath)
             elif self.env.store.state == self.env.store.STATE_NEW_FOLDER:
-                self.env.service.directory_create.folder()
+                folderpath = self.env.store.full_directory() + '/' + self.env.store.write_buffer
+                self.env.service.create.folder(folderpath)
         elif input == 'esc':
             self.env.service.state.set_to_browse()
 

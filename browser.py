@@ -5,7 +5,7 @@ class Browser:
         self.env = Env()
         
     def startup(self):
-        self.env.service.directory_create.base_folder()
+        self.env.service.create.base_folder()
 
     def run(self):
         self.env.component.run()

@@ -1,7 +1,7 @@
 import os
 from services.base_service import BaseService
 
-class DirectoryCreateService(BaseService):
+class CreateService(BaseService):
     def __init__(self, env):
         self.env = env
         
@@ -9,15 +9,12 @@ class DirectoryCreateService(BaseService):
         if not os.path.isdir(self.store.BASE_DIRECTORY):
             os.makedirs(self.store.BASE_DIRECTORY)
 
-    def note(self):
-        filepath = self.store.full_directory() + '/' + self.store.write_buffer + ".md"
+    def note(self, filepath):
         file = self.service.file_content.open(filepath,"a") 
         file.close() 
         self.service.state.set_to_browse()
     
-    def folder(self, directory = None):
-        if not directory:
-            directory = self.store.full_directory() + '/' + self.store.write_buffer
-        if not os.path.isdir(directory):
-            os.makedirs(directory)
+    def folder(self, folderpath):
+        if not os.path.isdir(folderpath):
+            os.makedirs(folderpath)
         self.service.state.set_to_browse()

@@ -6,10 +6,10 @@ class BrowseInput:
         if state != self.env.store.STATE_BROWSE:
             return
         if input == 'up':
-            self.env.service.directory.scroll_up()
+            self.env.service.directory.scroll(-1)
             self.env.service.directory.view_file_or_folder()
         elif input == 'down':
-            self.env.service.directory.scroll_down()
+            self.env.service.directory.scroll(1)
             self.env.service.directory.view_file_or_folder()
         elif input == 'n':
             self.env.service.state.new_note()

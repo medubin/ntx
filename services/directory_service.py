@@ -37,14 +37,9 @@ class DirectoryService(BaseService):
         self.store.opened_file = '\n'.join(os.listdir(self.store.full_directory() + '/' + self.store.selected_file_name()))
         self.component.open_file.widget.set_text(self.store.opened_file)
 
-    def scroll_up(self):
-        if self.store.selected_file > 0:
-            self.store.selected_file -= 1 
-            self.component.files.widget.focus_position = self.store.selected_file
-
-    def scroll_down(self):
-        if self.store.selected_file < len(self.store.files) - 1:
-            self.store.selected_file += 1
+    def scroll(self, direction):
+        if 0 <= (self.store.selected_file + direction) <= len(self.store.files) - 1:
+            self.store.selected_file += direction 
             self.component.files.widget.focus_position = self.store.selected_file
 
 
