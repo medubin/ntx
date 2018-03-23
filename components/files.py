@@ -8,7 +8,8 @@ class Files:
 
     def __render(self):
         listbox = urwid.ListBox(self.content)
-        listbox.set_focus(0)
+        if len(self.content):
+            listbox.set_focus(0)
         return listbox
 
     def create_files(self):
