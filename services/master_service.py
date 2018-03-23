@@ -14,3 +14,11 @@ class MasterService:
         self.file_content = FileContentService(env)
         self.markdown = MarkdownService(env)
         self.state = StateService(env)
+    
+    def setup(self):
+        self.directory.setup()
+        self.directory_create.setup()
+        self.editor.setup()
+        self.file_content.setup()
+        self.markdown.setup()
+        self.state.setup()

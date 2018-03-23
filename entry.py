@@ -5,10 +5,10 @@ browser = Browser()
 
 browser.startup()
 
-# try:
-browser.run()
-# except KeyboardInterrupt:
-    # browser.exit()
+try:
+    browser.run()
+except KeyboardInterrupt:
+    browser.exit()
 
 
     

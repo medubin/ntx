@@ -1,4 +1,6 @@
 from pathlib import Path
+import os
+
 class MasterStore:
     STATE_BROWSE = "BROWSE"
     STATE_NEW_FILE = "NEW_FILE"
@@ -10,7 +12,7 @@ class MasterStore:
         self.state = self.STATE_BROWSE 
         self.write_buffer = ''
         self.selected_file = 0 #selected file index
-        self.files = []
+        self.files = os.listdir(self.BASE_DIRECTORY)
         self.directory = ''
         
     def push_directory(self, new_directory):
