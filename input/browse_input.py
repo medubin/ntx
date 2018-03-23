@@ -1,9 +1,11 @@
+from constants.state import State
+
 class BrowseInput:
     def __init__(self, env):
         self.env = env
 
     def listen(self, input, state):
-        if state != self.env.store.STATE_BROWSE:
+        if state != State.BROWSE:
             return
         if input == 'up':
             self.env.service.directory.scroll(-1)

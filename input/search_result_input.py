@@ -1,9 +1,10 @@
+from constants.state import State
 class SearchResultInput:
     def __init__(self, env):
         self.env = env
 
     def listen(self, input, state):
-        if state != self.env.store.STATE_SEARCH_RESULT:
+        if state != State.SEARCH_RESULT:
             return
 
         if input == 'up':

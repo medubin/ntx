@@ -1,17 +1,13 @@
 from pathlib import Path
 import os
+from constants.state import State
 
 class MasterStore:
-    STATE_BROWSE = "BROWSE"
-    STATE_NEW_FILE = "NEW_FILE"
-    STATE_NEW_FOLDER = "NEW_FOLDER"
-    STATE_SEARCH_INPUT = "SEARCH_INPUT"
-    STATE_SEARCH_RESULT = "SEARCH_RESULT"
     BASE_DIRECTORY = str(Path.home()) + '/.ntx'
 
     def __init__(self):
         self.opened_file = '' #opened file contents
-        self.state = self.STATE_BROWSE 
+        self.state = State.BROWSE 
         self.write_buffer = ''
         self.selected_file = 0 #selected file index
         self.files = os.listdir(self.BASE_DIRECTORY)

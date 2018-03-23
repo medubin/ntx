@@ -1,9 +1,11 @@
+from constants.state import State
+
 class SearchInput:
     def __init__(self, env):
         self.env = env
 
     def listen(self, input, state):
-        if state != self.env.store.STATE_SEARCH_INPUT:
+        if state != State.SEARCH_INPUT:
             return
         if len(input) == 1:
             self.env.store.write_buffer += input
