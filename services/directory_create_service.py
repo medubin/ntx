@@ -10,7 +10,8 @@ class DirectoryCreateService(BaseService):
             os.makedirs(self.store.BASE_DIRECTORY)
 
     def note(self):
-        file = self.service.file_content.open(self.store.write_buffer + ".md","a") 
+        filepath = self.store.full_directory() + '/' + self.store.write_buffer + ".md"
+        file = self.service.file_content.open(filepath,"a") 
         file.close() 
         self.service.state.set_to_browse()
     

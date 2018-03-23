@@ -18,7 +18,7 @@ class DirectoryService(BaseService):
         file = self.store.selected_file_name()
         full_path = self.store.full_directory() + '/' + file
         if not os.path.isdir(full_path):
-            self.service.editor.edit_file(file)
+            self.service.editor.edit_file(full_path)
         else:
             self.open_folder(file)
         
@@ -36,6 +36,17 @@ class DirectoryService(BaseService):
     def view_folder_contents(self):
         self.store.opened_file = '\n'.join(os.listdir(self.store.full_directory() + '/' + self.store.selected_file_name()))
         self.component.open_file.widget.set_text(self.store.opened_file)
+
+    def scroll_up(self):
+        if self.store.selected_file > 0:
+            self.store.selected_file -= 1 
+            self.component.files.widget.focus_position = self.store.selected_file
+
+    def scroll_down(self):
+        if self.store.selected_file < len(self.store.files) - 1:
+            self.store.selected_file += 1
+            self.component.files.widget.focus_position = self.store.selected_file
+
 
 
 

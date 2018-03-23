@@ -5,6 +5,8 @@ class MasterStore:
     STATE_BROWSE = "BROWSE"
     STATE_NEW_FILE = "NEW_FILE"
     STATE_NEW_FOLDER = "NEW_FOLDER"
+    STATE_SEARCH_INPUT = "SEARCH_INPUT"
+    STATE_SEARCH_RESULT = "SEARCH_RESULT"
     BASE_DIRECTORY = str(Path.home()) + '/.ntx'
 
     def __init__(self):
@@ -15,6 +17,7 @@ class MasterStore:
         self.files = os.listdir(self.BASE_DIRECTORY)
         self.directory = ''
         self.input_state = ''
+        self.search_results = []
         
     def push_directory(self, new_directory):
         self.directory += '/' + new_directory
@@ -27,5 +30,5 @@ class MasterStore:
     
     def full_directory(self):
         return self.BASE_DIRECTORY + self.directory
-    
+
 

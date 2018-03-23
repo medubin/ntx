@@ -1,23 +1,18 @@
-class BrowseInput:
+class SearchResultInput:
     def __init__(self, env):
         self.env = env
 
     def listen(self, input, state):
-        if state != self.env.store.STATE_BROWSE:
+        if state != self.env.store.STATE_SEARCH_RESULT:
             return
+
         if input == 'up':
             self.env.service.directory.scroll_up()
             self.env.service.directory.view_file_or_folder()
         elif input == 'down':
             self.env.service.directory.scroll_down()
             self.env.service.directory.view_file_or_folder()
-        elif input == 'n':
-            self.env.service.state.new_note()
-        elif input == 'N':
-            self.env.service.state.new_folder()
         elif input == 'enter' or input == 'right':
-            self.env.service.directory.open_folder_or_file()
-        elif input == 'left':
-            self.env.service.directory.leave_folder()
-        elif input == 'g':
-            self.env.service.state.search()
+            file = self.env.store.search_results[self.env.store.selected_file]
+            self.env.service.editor.edit_file(file)
+  
