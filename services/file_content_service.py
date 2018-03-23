@@ -17,4 +17,6 @@ class FileContentService:
             self.env.store.opened_file = self.env.service.file_content.get(file)
             self.env.component.open_file.widget.set_text(self.env.store.opened_file)
 
+
+
         

@@ -1,3 +1,4 @@
+
 from stores.master_store import MasterStore
 from components.master_component import MasterComponent
 from input.master_input import MasterInput

@@ -17,7 +17,16 @@ class DirectoryService:
         if not os.path.isdir(full_path):
             self.env.service.file_content.view()
         else:
+            self.view_folder_contents()
+
+    def open_folder_or_file(self):
+        file = self.env.service.directory.get_selected_file()
+        full_path = self.env.service.directory.directory() + '/' + file
+        if not os.path.isdir(full_path):
+            self.env.service.editor.edit_file()
+        else:
             self.open_folder()
+        
 
     def open_folder(self):
         self.env.store.directory = self.env.store.directory + '/' + self.get_selected_file()
@@ -32,6 +41,10 @@ class DirectoryService:
 
     def directory(self):
         return self.base_directory + self.env.store.directory
+
+    def view_folder_contents(self):
+        self.env.store.opened_file = '\n'.join(os.listdir(self.directory() + '/' + self.get_selected_file()))
+        self.env.component.open_file.widget.set_text(self.env.store.opened_file)
 
 
 
