@@ -12,9 +12,9 @@ class BrowseInput:
             self.scroll_down()
             self.env.service.directory.view_file_or_folder()
         elif input == 'n':
-            self.env.store.state = self.env.store.STATE_NEW_FILE
-        elif input == 'f':
-            self.env.store.state = self.env.store.STATE_NEW_FOLDER
+            self.env.service.state.new_note()
+        elif input == 'N':
+            self.env.service.state.new_folder()
         elif input == 'enter' or input == 'right':
             self.env.service.directory.open_folder_or_file()
         elif input == 'left':

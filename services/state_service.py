@@ -6,11 +6,23 @@ class StateService(BaseService):
 
     def set_to_browse(self):
         self.store.write_buffer = ''
+        self.store.input_state = ''
         self.store.files = os.listdir(self.store.full_directory())
         self.store.state = self.store.STATE_BROWSE 
         self.component.input_bar.set_text('')
         self.component.files.content[:] = self.component.files.create_files()
         self.component.files.widget.set_focus(0)
+        
+
+    def new_note(self):
+        self.store.state = self.store.STATE_NEW_FILE
+        self.store.input_state = 'new note: '
+        self.component.input_bar.set_text('')
+        
+    def new_folder(self):
+        self.store.state = self.store.STATE_NEW_FILE
+        self.store.input_state = 'new folder: '
+        self.component.input_bar.set_text('')
 
 
 

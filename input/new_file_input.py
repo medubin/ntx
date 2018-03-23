@@ -18,8 +18,7 @@ class NewFileInput:
             elif self.env.store.state == self.env.store.STATE_NEW_FOLDER:
                 self.env.service.directory_create.folder()
         elif input == 'esc':
-            self.env.component.input_bar.set_text('')
-            self.env.store.state = self.env.store.STATE_BROWSE
+            self.env.service.state.set_to_browse()
 
     
     def __is_title_character(self, input):

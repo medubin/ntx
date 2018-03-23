@@ -14,6 +14,7 @@ class MasterStore:
         self.selected_file = 0 #selected file index
         self.files = os.listdir(self.BASE_DIRECTORY)
         self.directory = ''
+        self.input_state = ''
         
     def push_directory(self, new_directory):
         self.directory += '/' + new_directory
