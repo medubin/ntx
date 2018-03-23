@@ -6,7 +6,10 @@ from services.master_service import MasterService
 
 class Env:
     def __init__(self):
-        self.store = MasterStore()        
+        self.store = MasterStore()     
+        self.component = MasterComponent(self)   
         self.service = MasterService(self)
         self.input = MasterInput(self)
-        self.component = MasterComponent(self)
+
+        self.service.setup()
+        

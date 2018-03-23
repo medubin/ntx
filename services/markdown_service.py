@@ -1,9 +1,10 @@
 import markdown
-class MarkdownService:
+from services.base_service import BaseService
+class MarkdownService(BaseService):
     def __init__(self, env):
         self.env = env
     
-    def parse_markdown(self, text):
+    def parse(self, text):
         return markdown.markdown(text)
 
 

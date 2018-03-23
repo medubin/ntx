@@ -9,6 +9,9 @@ class Browser:
 
     def run(self):
         self.env.component.run()
+    
+    def exit(self):
+        print('exiting. goodbye.')
 
     def __input_filter(self, input, raw):
         return input
