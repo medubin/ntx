@@ -8,7 +8,7 @@ class StateService(BaseService):
         self.store.write_buffer = ''
         self.store.files = os.listdir(self.store.full_directory())
         self.store.state = self.store.STATE_BROWSE 
-        self.component.input_bar.widget.set_text('')
+        self.component.input_bar.set_text('')
         self.component.files.content[:] = self.component.files.create_files()
         self.component.files.widget.set_focus(0)
 

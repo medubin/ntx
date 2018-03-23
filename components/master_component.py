@@ -7,7 +7,8 @@ from components.header import Header
 
 class MasterComponent:
     palette = [('header', 'light green', 'dark blue'),
-    ('reveal focus', 'black', 'dark cyan', 'standout')]
+    ('reveal focus', 'black', 'dark cyan', 'standout'),
+    ('input', 'light green', 'black' )]
     def __init__(self, env):
         self.env = env
         self.files = Files(self.env)
