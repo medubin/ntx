@@ -1,6 +1,3 @@
-import pager
-from constants.input import Input
-import urwid
 class BrowseInput:
     def __init__(self, env):
         self.env = env
@@ -20,8 +17,6 @@ class BrowseInput:
             self.env.store.state = self.env.store.STATE_NEW_FOLDER
         elif input == 'enter' or input == 'right':
             self.env.service.directory.open_folder_or_file()
-        elif input == 'e':
-            self.env.service.editor.edit_file()
         elif input == 'left':
             self.env.service.directory.leave_folder()
 

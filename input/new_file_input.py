@@ -1,8 +1,6 @@
-from constants.input import Input
 class NewFileInput:
     def __init__(self, env):
         self.env = env
-
 
     def listen(self, input, state):
         if state not in (self.env.store.STATE_NEW_FILE, self.env.store.STATE_NEW_FOLDER):

@@ -5,11 +5,8 @@ class EditorService:
     def __init__(self, env):
         self.env = env
    
-    def edit_file(self):
-        file = self.env.service.directory.get_selected_file()
-        full_path = self.env.service.directory.directory() + '/' + file
-        if not os.path.isdir(full_path):
-            self.__open_editor(file)
+    def edit_file(self, file):
+        self.__open_editor(file)
 
         
     def __open_editor(self, file):

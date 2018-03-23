@@ -3,7 +3,7 @@ from browser import Browser
 
 browser = Browser()
 
-# browser.startup()
+browser.startup()
 
 # try:
 browser.run()

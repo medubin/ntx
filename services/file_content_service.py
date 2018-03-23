@@ -8,11 +8,10 @@ class FileContentService:
             return self.env.service.markdown.parse_markdown(f.read())
     
     def open(self, file, type ='r'):
-        return open(self.env.service.directory.directory() + '/' + file, type)
-
+        return open(self.env.store.full_directory() + '/' + file, type)
 
     def view(self):
-        file = self.env.service.directory.get_selected_file()
+        file = self.env.store.selected_file_name()
         if (file is not None):
             self.env.store.opened_file = self.env.service.file_content.get(file)
             self.env.component.open_file.widget.set_text(self.env.store.opened_file)
