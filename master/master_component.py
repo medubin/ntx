@@ -27,7 +27,6 @@ class MasterComponent:
         return urwid.Frame(columns, self.header.widget, self.input_bar.widget)
 
     def run(self):
-
         self.loop = urwid.MainLoop(
             self.render(), 
             self.palette, 

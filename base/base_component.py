@@ -4,3 +4,4 @@ class BaseComponent:
     
     def setup(self):
         self.store = self.env.store
+        self.env = None

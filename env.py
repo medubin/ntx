@@ -13,4 +13,5 @@ class Env:
 
         self.service.setup()
         self.input.setup()
+        self.component.setup()
         

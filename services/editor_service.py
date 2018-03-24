@@ -15,13 +15,5 @@ class EditorService(BaseService):
             call([EDITOR, f.name])
             f.seek(0) # test if this is necessary
             f.read() # test if this is necessary
-
-
-
-
-
-
-
-
-
-
+        self.component.loop.stop()
+        self.component.run()
