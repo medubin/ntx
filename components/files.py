@@ -1,4 +1,5 @@
 import urwid
+import os
 from base.base_component import BaseComponent
 
 class Files(BaseComponent):
@@ -17,8 +18,15 @@ class Files(BaseComponent):
     def create_files(self, files):
         contents = []
         for file in files:
+            full_path = self.env.store.full_directory() + '/' + file
             content = urwid.Text(file)
-            contents.append(urwid.AttrMap(content, None, 'reveal focus'))
+            if os.path.isdir(full_path):
+                contents.append(urwid.AttrMap(content, 'folder', 'reveal focus'))
+            else:
+                contents.append(urwid.AttrMap(content, None, 'reveal focus'))
+
+            
+         
         return contents
     
     def set_focus(self, focus):
