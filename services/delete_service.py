@@ -10,6 +10,7 @@ class DeleteService(BaseService):
        shutil.rmtree(folderpath)
 
     def folder_or_note(self, full_path):
+        self.store.selected_file -= 1
         if os.path.isdir(full_path):
             self.folder(full_path)
         else:
