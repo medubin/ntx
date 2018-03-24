@@ -16,6 +16,12 @@ class MasterComponent:
         self.input_bar = InputBar(self.env)
         self.open_file = OpenFile(self.env)
     
+    def setup(self):
+        self.files.setup()
+        self.header.setup()
+        self.input_bar.setup()
+        self.open_file.setup()
+    
     def render(self):
         columns = urwid.Columns([self.files.widget, urwid.Filler(self.open_file.widget)])
         return urwid.Frame(columns, self.header.widget, self.input_bar.widget)

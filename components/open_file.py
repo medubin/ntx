@@ -1,5 +1,6 @@
 import urwid
-class OpenFile:
+from base.base_component import BaseComponent
+class OpenFile(BaseComponent):
     def __init__(self, env):
         self.env = env
         self.widget = self.__render()

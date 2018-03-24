@@ -2,7 +2,8 @@ import os
 from base.base_service import BaseService
 class FolderContentService(BaseService):
     def view(self, folder):
-        self.store.opened_file = folder
+
+        self.store.opened_file = '\n'.join(os.listdir(folder))
         self.component.open_file.widget.set_text(self.store.opened_file)
 
     def open(self, folder):

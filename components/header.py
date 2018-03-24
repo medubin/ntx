@@ -1,5 +1,6 @@
 import urwid
-class Header:
+from base.base_component import BaseComponent
+class Header(BaseComponent):
     def __init__(self, env):
         self.env = env
         self.widget = self.__render()

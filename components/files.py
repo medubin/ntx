@@ -1,5 +1,7 @@
 import urwid
-class Files:
+from base.base_component import BaseComponent
+
+class Files(BaseComponent):
     def __init__(self, env):
         self.env = env
         self.content = urwid.SimpleFocusListWalker(self.create_files(self.env.store.files))
