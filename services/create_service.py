@@ -10,15 +10,15 @@ class CreateService(BaseService):
     def note(self, filepath):
         file = self.service.file_content.open(filepath + '.md',"a") 
         file.close() 
-        self.service.state.set_to_browse()
+        self.service.state.browse()
     
     def folder(self, folderpath):
         if not os.path.isdir(folderpath):
             os.makedirs(folderpath)
-        self.service.state.set_to_browse()
+        self.service.state.browse()
 
     def folder_or_note(self, full_path):
         if self.store.state == State.NEW_FILE: 
-            self.service.create.note(full_path)
+            self.note(full_path)
         elif self.store.state == State.NEW_FOLDER:
-            self.service.create.folder(full_path)
+            self.folder(full_path)

@@ -5,7 +5,7 @@ from base.base_service import BaseService
 class EditorService(BaseService):
     def edit_file(self, filepath):
         self.__open_editor(filepath)
-        self.service.state.set_to_browse()
+        self.service.state.browse()
         
 
     def __open_editor(self, filepath):

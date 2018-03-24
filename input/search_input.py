@@ -12,4 +12,4 @@ class SearchInput(BaseInput):
             self.service.search.search(self.store.write_buffer)
             self.service.state.search_results()
         elif input == 'esc':
-            self.service.state.set_to_browse()
+            self.service.state.browse()

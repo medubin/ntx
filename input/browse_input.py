@@ -19,3 +19,5 @@ class BrowseInput(BaseInput):
             self.service.folder_content.close()
         elif input == 'g':
             self.service.state.search()
+        elif input == 'd':
+            self.service.state.delete()
