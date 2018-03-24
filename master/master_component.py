@@ -23,7 +23,7 @@ class MasterComponent:
         self.open_file.setup()
     
     def render(self):
-        columns = urwid.Columns([self.files.widget, urwid.Filler(self.open_file.widget)])
+        columns = urwid.Columns([self.files.widget, urwid.Filler(self.open_file.widget, valign='top')])
         return urwid.Frame(columns, self.header.widget, self.input_bar.widget)
 
     def run(self):
