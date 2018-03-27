@@ -12,8 +12,8 @@ class DeleteInput(BaseInput):
             self.service.input.pop()
         elif input == 'enter':
             if (self.store.write_buffer == 'Y'):
-                full_path = self.store.full_directory() + '/' + self.store.selected_file_name()
+                full_path = self.store.get_full_directory() + '/' + self.store.selected_file_name()
                 self.service.delete.folder_or_note(full_path)
-                
+
             self.service.state.browse()
 

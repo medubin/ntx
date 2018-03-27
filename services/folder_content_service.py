@@ -12,7 +12,7 @@ class FolderContentService(BaseService):
         self.service.state.browse()
 
     def close(self):
-        if len(self.store.directory) > 0:
+        if len(self.store.get_directory()) > 0:
             self.store.pop_directory()
             self.store.pop_file_index()
             self.service.state.browse()

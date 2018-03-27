@@ -10,7 +10,7 @@ class NewFileInput(BaseInput):
         elif input == 'backspace':
             self.service.input.pop()
         elif input == 'enter':
-             full_path = self.store.full_directory() + '/' + self.store.write_buffer
+             full_path = self.store.get_full_directory() + '/' + self.store.write_buffer
              self.service.create.folder_or_note(full_path)
         elif input == 'esc':
             self.service.state.browse()

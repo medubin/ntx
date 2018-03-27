@@ -10,7 +10,7 @@ class FileContentService(BaseService):
 
     def view(self):
         file = self.store.selected_file_name()
-        filepath = self.store.full_directory() + '/' + file
+        filepath = self.store.get_full_directory() + '/' + file
         if (file is not None):
             self.store.opened_file = self.get(filepath)
             self.component.open_file.widget.set_text(self.store.opened_file)
