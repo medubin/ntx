@@ -10,8 +10,11 @@ class SearchResultInput(BaseInput):
         elif input == 'down':
             self.service.directory.scroll(1)
         elif input == 'enter' or input == 'right':
-            file = self.store.search_results[self.store.selected_file]
+            # move this logic to store
+            file = self.store.search_results[self.store.get_file_index()]
             self.service.editor.edit_file(file)
         elif input == 'esc':
+            self.store.pop_file_index()
             self.service.state.browse()
+        
   

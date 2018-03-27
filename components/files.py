@@ -31,7 +31,7 @@ class Files(BaseComponent):
     
     def set_focus(self, focus):
         if len(self.content):
-            self.widget.set_focus(0)
+            self.widget.set_focus(focus)
 
 
 

@@ -9,7 +9,7 @@ class StateService(BaseService):
         self.store.files = os.listdir(self.store.full_directory())
         self.component.input_bar.set_text('')
         self.component.files.content[:] = self.component.files.create_files(self.store.files)
-        self.component.files.set_focus(0)
+        self.component.files.set_focus(self.store.get_file_index())
 
     def new_note(self):
         self.store.state = State.NEW_FILE
@@ -28,7 +28,7 @@ class StateService(BaseService):
 
     def search_results(self):
         self.store.state = State.SEARCH_RESULT
-        self.store.selected_file = 0
+        self.store.push_file_index(0)
         self.store.write_buffer = ''
         self.store.input_state = ''
         self.component.input_bar.set_text('')

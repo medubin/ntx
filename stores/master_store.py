@@ -9,7 +9,7 @@ class MasterStore:
         self.opened_file = '' #opened file contents
         self.state = State.BROWSE 
         self.write_buffer = ''
-        self.selected_file = 0 #selected file index
+        self.__file_indices = [0] #selected file index
         self.files = os.listdir(self.BASE_DIRECTORY)
         self.directory = ''
         self.input_state = ''
@@ -22,9 +22,25 @@ class MasterStore:
         self.directory = '/'.join(self.directory.split('/')[:-1])
 
     def selected_file_name(self):
-        return self.files[self.selected_file]
+        return self.files[self.get_file_index()]
     
     def full_directory(self):
         return self.BASE_DIRECTORY + self.directory
+
+
+    #file index
+    def get_file_index(self):
+        return self.__file_indices[-1]
+    
+    def pop_file_index(self):
+        self.__file_indices = self.__file_indices[:-1]
+
+    def push_file_index(self, index):
+        self.__file_indices.append(index)
+    
+    def change_file_index(self, velocity):
+        self.__file_indices[-1] += velocity
+
+
 
 

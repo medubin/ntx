@@ -8,13 +8,13 @@ class FolderContentService(BaseService):
 
     def open(self, folder):
         self.store.push_directory(folder)
-        self.store.selected_file = 0
+        self.store.push_file_index(0)
         self.service.state.browse()
 
     def close(self):
         if len(self.store.directory) > 0:
             self.store.pop_directory()
-            self.store.selected_file = 0
+            self.store.pop_file_index()
             self.service.state.browse()
 
         
