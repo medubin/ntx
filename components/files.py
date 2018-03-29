@@ -10,7 +10,7 @@ class Files(BaseComponent):
         
 
     def __render(self):
-        listbox = urwid.ListBox(self.content)
+        listbox = ListBoxOverride(self.content)
         if len(self.content):
             listbox.set_focus(0)
         return listbox
@@ -30,3 +30,8 @@ class Files(BaseComponent):
     def set_focus(self, focus):
         if len(self.content):
             self.widget.set_focus(focus)
+
+# overrides the keypress which has some weird behavior in urwid.
+class ListBoxOverride(urwid.ListBox):
+    def keypress(self, size, key):
+        return key
