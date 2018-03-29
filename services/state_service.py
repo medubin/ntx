@@ -6,7 +6,7 @@ class StateService(BaseService):
         self.store.state = State.BROWSE 
         self.store.write_buffer = ''
         self.store.input_state = ''
-        self.store.set_files(os.listdir(self.store.get_full_directory()))
+        self.store.set_files(self.store.get_full_directory())
         self.component.input_bar.set_text('')
         self.component.files.content[:] = self.component.files.create_files(self.store.get_files())
         self.component.files.set_focus(self.store.get_file_index())

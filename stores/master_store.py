@@ -9,7 +9,7 @@ class MasterStore:
         self.__file_indices = [0]
         self.__files = []
         self.__directory = ''
-        
+
         self.opened_file = '' #opened file contents
         self.state = State.BROWSE 
         self.write_buffer = ''
@@ -39,6 +39,7 @@ class MasterStore:
     def set_files(self, directory):
         folders = []
         notes = []
+        
         all_files = os.listdir(directory)
 
         for file in all_files:
