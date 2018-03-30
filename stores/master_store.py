@@ -39,8 +39,9 @@ class MasterStore:
     def set_files(self, directory):
         folders = []
         notes = []
-        
+
         all_files = os.listdir(directory)
+
 
         for file in all_files:
             full_path = self.get_full_directory() + '/' + file
@@ -49,7 +50,7 @@ class MasterStore:
             else:
                 notes.append(file)
             
-            self.__files = sorted(folders) + sorted(notes)
+        self.__files = sorted(folders) + sorted(notes)
 
 
 

@@ -21,3 +21,6 @@ class BrowseInput(BaseInput):
             self.service.state.search()
         elif input == 'd':
             self.service.state.delete()
+        elif input == 'i':
+            self.service.state.command()
+            

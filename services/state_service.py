@@ -10,6 +10,7 @@ class StateService(BaseService):
         self.component.input_bar.set_text('')
         self.component.files.content[:] = self.component.files.create_files(self.store.get_files())
         self.component.files.set_focus(self.store.get_file_index())
+        # self.service.content.view()
 
     def new_note(self):
         self.store.state = State.NEW_FILE
@@ -39,6 +40,12 @@ class StateService(BaseService):
         self.store.state = State.DELETE
         self.store.input_state = 'delete? (Y/n) '
         self.component.input_bar.set_text('')
+    
+    def command(self):
+        self.store.state = State.COMMAND
+        self.store.input_state = 'Command:'
+        self.component.input_bar.set_text('')
+
 
 
     

@@ -1,11 +1,47 @@
-import markdown
+# import markdown
+# from pygments import highlight
+# from pygments.lexers import HtmlLexer
+# from pygments.formatters import TerminalTrueColorFormatter
+
 # import re
-# from hashlib import md5
+
+
 
 from base.base_service import BaseService
 class MarkdownService(BaseService):
+    # mdv.term_columns = 30
+
+# calling like this (all CLI options supported, check def main
+
     def parse(self, text):
         return text
+
+        # formatted = mdv.main(text)  
+        # return formatted
+        # return formatted
+        # html = markdown.markdown(text)
+        # return highlight(html, HtmlLexer(), TerminalTrueColorFormatter())
+
+        # return self.__format_markdown(text)
+
+    
+    # def __format_markdown(self, text):
+    #     content = []
+    #     headers = re.compile("^#+")
+    #     for line in text:
+    #         match = headers.match(line)
+    #         if (match):
+    #             content.append(match.group())
+
+    #     return "\n".join(content)
+    #         # return headers.match(text) or ''
+            
+
+
+
+
+
+
         # return markdown.markdown(text)
 
     

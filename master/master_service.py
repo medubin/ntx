@@ -9,6 +9,7 @@ from services.input_service import InputService
 from services.folder_content_service import FolderContentService
 from services.content_service import ContentService
 from services.delete_service import DeleteService
+from services.command_service import CommandService
 
 class MasterService:
     def __init__(self, env):
@@ -25,6 +26,7 @@ class MasterService:
         self.markdown = MarkdownService(env)
         self.state = StateService(env)
         self.search = SearchService(env)
+        self.command = CommandService(env)
         
     def setup(self):
         self.create.setup()
@@ -38,5 +40,6 @@ class MasterService:
         self.markdown.setup()
         self.state.setup()
         self.search.setup()
+        self.command.setup()
         
         
