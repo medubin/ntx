@@ -7,7 +7,7 @@ class DirectoryService(BaseService):
         if 0 <= (self.store.get_file_index() + direction) <= len(self.store.get_files()) - 1:
             self.store.change_file_index(direction)
             self.component.files.widget.focus_position = self.store.get_file_index()
-        self.service.content.view()
+            self.service.content.view()
 
 
 

@@ -52,10 +52,10 @@ class MasterStore:
             
         self.__files = sorted(folders) + sorted(notes)
 
-
-
     def selected_file_name(self):
-        return self.__files[self.get_file_index()]
+        if self.get_file_index() < len(self.__files): 
+            return self.__files[self.get_file_index()]
+        return None
 
 
 

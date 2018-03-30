@@ -10,7 +10,7 @@ class StateService(BaseService):
         self.component.input_bar.set_text('')
         self.component.files.content[:] = self.component.files.create_files(self.store.get_files())
         self.component.files.set_focus(self.store.get_file_index())
-        # self.service.content.view()
+        self.service.content.view()
 
     def new_note(self):
         self.store.state = State.NEW_FILE

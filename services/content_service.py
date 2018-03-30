@@ -4,6 +4,9 @@ class ContentService(BaseService):
     
     def open(self):
         file = self.store.selected_file_name()
+        if not file:
+            return
+
         full_path = self.store.get_full_directory() + '/' + file
         if not os.path.isdir(full_path):
             self.service.editor.edit_file(full_path)
@@ -12,6 +15,9 @@ class ContentService(BaseService):
 
     def view(self):
         file = self.store.selected_file_name()
+        if not file:
+            return
+
         full_path = self.store.get_full_directory() + '/' + file
         if not os.path.isdir(full_path):
             self.service.file_content.view()
