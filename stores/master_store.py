@@ -9,10 +9,11 @@ class MasterStore:
         self.__file_indices = [0]
         self.__files = []
         self.__directory = ''
+        self.__write_buffer = ''
 
         self.opened_file = '' #opened file contents
         self.state = State.BROWSE 
-        self.write_buffer = ''
+        
         
         self.input_state = ''
         self.search_results = []
@@ -71,6 +72,21 @@ class MasterStore:
     
     def change_file_index(self, velocity):
         self.__file_indices[-1] += velocity
+
+
+
+    #write buffer
+    def get_write_buffer(self):
+        return self.__write_buffer
+    
+    def set_write_buffer(self, write_buffer):
+        self.__write_buffer = write_buffer
+    
+    def push_write_buffer(self, char):
+        self.__write_buffer += char
+    
+    def pop_write_buffer(self):
+        self.__write_buffer = self.__write_buffer[:-1]
 
 
 

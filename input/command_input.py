@@ -10,7 +10,7 @@ class CommandInput(BaseInput):
         elif input == 'backspace':
             self.service.input.pop()
         elif input == 'enter':
-            self.service.command.interpret(self.store.write_buffer)
+            self.service.command.interpret(self.store.get_write_buffer())
         elif input == 'esc':
             self.service.state.browse()
 

@@ -1,6 +1,5 @@
 import urwid
-from base.base_component import BaseComponent
-class InputBar(BaseComponent):
+class InputBar:
     def __init__(self, env):
         self.env = env
         self.widget = self.__render()

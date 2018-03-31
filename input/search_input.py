@@ -9,7 +9,7 @@ class SearchInput(BaseInput):
         elif input == 'backspace':
             self.service.input.pop()
         elif input == 'enter':
-            self.service.search.search(self.store.write_buffer)
+            self.service.search.search(self.store.get_write_buffer())
             self.service.state.search_results()
         elif input == 'esc':
             self.service.state.browse()

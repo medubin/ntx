@@ -4,7 +4,7 @@ from constants.state import State
 class StateService(BaseService):
     def browse(self):
         self.store.state = State.BROWSE 
-        self.store.write_buffer = ''
+        self.store.set_write_buffer('')
         self.store.input_state = ''
         self.store.set_files(self.store.get_full_directory())
         self.component.input_bar.set_text('')
@@ -30,7 +30,7 @@ class StateService(BaseService):
     def search_results(self):
         self.store.state = State.SEARCH_RESULT
         self.store.push_file_index(0)
-        self.store.write_buffer = ''
+        self.store.set_write_buffer('')
         self.store.input_state = ''
         self.component.input_bar.set_text('')
         self.component.files.content[:] = self.component.files.create_files(self.store.search_results)
