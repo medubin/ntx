@@ -10,6 +10,7 @@ class MasterStore:
         self.__files = []
         self.__directory = ''
         self.__write_buffer = ''
+        self.__write_cursor_pos = 0 #distance from the end
 
         self.opened_file = '' #opened file contents
         self.state = State.BROWSE 
@@ -88,6 +89,26 @@ class MasterStore:
     def pop_write_buffer(self):
         self.__write_buffer = self.__write_buffer[:-1]
 
+    def insert_write_buffer(self, char, pos):
+        self.__write_buffer = self.__write_buffer[:pos] + char + self.__write_buffer[pos:]
+
+    def splice_write_buffer(self, pos):
+        if(pos == 0):
+            return
+            
+        self.__write_buffer = self.__write_buffer[:pos - 1] + self.__write_buffer[pos:]
+
+
+
+    #write cursor pos
+    def get_write_cursor_pos(self):
+        return self.__write_cursor_pos
+    
+    def set_write_cursor_pos(self, pos):
+        self.__write_cursor_pos = pos
+    
+    def change_write_cursor_pos(self, velocity):
+        self.__write_cursor_pos += velocity
 
 
 

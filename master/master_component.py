@@ -9,6 +9,7 @@ class MasterComponent:
     palette = [('header', 'light green', 'dark blue'),
     ('reveal focus', 'black', 'dark cyan', 'standout'),
     ('input', 'light green', 'black' ),
+    ('input cursor', 'light green', 'white', 'blink'),
     ('folder', 'light green', '', 'bold')
     ]
 

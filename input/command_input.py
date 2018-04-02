@@ -6,11 +6,15 @@ class CommandInput(BaseInput):
             return
 
         if self.service.input.is_title_character(input):
-            self.service.input.push(input)
+            self.service.input.insert(input)
         elif input == 'backspace':
-            self.service.input.pop()
+            self.service.input.splice()
         elif input == 'enter':
             self.service.command.interpret(self.store.get_write_buffer())
+        elif input == 'left':
+            self.service.input.change_write_cursor_pos(1)
+        elif input == 'right':
+            self.service.input.change_write_cursor_pos(-1)
         elif input == 'esc':
             self.service.state.browse()
 
