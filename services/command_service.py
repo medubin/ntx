@@ -26,10 +26,7 @@ class CommandService(BaseService):
             self.service.state.search_results()
 
     def autocomplete(self, input):
-        possible_commands = []
-        for command in Command.ALL:
-            if command.startswith(input):
-                possible_commands.append(command)
+        possible_commands = list(filter(lambda x: x.startswith(input), Command.ALL))
 
         if len(possible_commands) > 0:
              self.store.set_write_buffer(os.path.commonprefix(possible_commands))
