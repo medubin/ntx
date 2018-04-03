@@ -17,5 +17,8 @@ class CommandInput(BaseInput):
             self.service.input.change_write_cursor_pos(-1)
         elif input == 'esc':
             self.service.state.browse()
+        elif input == 'tab':
+            self.service.command.autocomplete(self.store.get_write_buffer())
+
 
     
