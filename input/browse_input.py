@@ -23,4 +23,10 @@ class BrowseInput(BaseInput):
             self.service.state.delete()
         elif input == 'i':
             self.service.state.command()
+        elif input[0] == 'mouse press':
+            if input[1] == 4.0:
+                self.service.directory.scroll(-1)
+            elif input[1] == 5.0:
+                self.service.directory.scroll(1)
+
             
