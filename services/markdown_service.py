@@ -1,94 +1,60 @@
-# import markdown
+import markdown
 # from pygments import highlight
 # from pygments.lexers import HtmlLexer
 # from pygments.formatters import TerminalTrueColorFormatter
 
-# import re
+import re
+import urwid
 
 
-
+import urwid 
 from base.base_service import BaseService
 class MarkdownService(BaseService):
+    HEADER = {
+        1: '#0f0',
+        2: '#0d0',
+        3: '#0a0',
+        4: '#070',
+        5: '#040',
+        6: '#010'
+    }
+
     # mdv.term_columns = 30
 
 # calling like this (all CLI options supported, check def main
 
     def parse(self, text):
+        line_split = text.split('\n')
+
+        tags = self.__tags(line_split[0])
+
+        line_split = list(map(lambda x: self.__format_markdown(x), line_split[1:])) 
+        return [tags] + line_split
+
+
+
+    def __format_markdown(self, line):
+        if len(line) == 0: # no need to format empty line
+            return line
+        line += '\n'
+        return self.__headers(line) or line
+
+
+    def __tags(self, text):
+        if len(text) == 0:
+            return text
+
+        if text[0] == '[' and text[-1] == ']':
+            return (urwid.AttrSpec('#f00,bold', '', 256), text)
+        
         return text
 
-        # formatted = mdv.main(text)  
-        # return formatted
-        # return formatted
-        # html = markdown.markdown(text)
-        # return highlight(html, HtmlLexer(), TerminalTrueColorFormatter())
+    def __headers(self, line):
+        headers = re.search(r'^\#+', line)
+        if headers and len(headers.group(0)) < 7:
+            h_number = len(headers.group(0))
+            return (urwid.AttrSpec(self.HEADER[h_number] + ',bold', '', 256),line[h_number + 1:])
+        return None
 
-        # return self.__format_markdown(text)
-
+        
     
-    # def __format_markdown(self, text):
-    #     content = []
-    #     headers = re.compile("^#+")
-    #     for line in text:
-    #         match = headers.match(line)
-    #         if (match):
-    #             content.append(match.group())
-
-    #     return "\n".join(content)
-    #         # return headers.match(text) or ''
-            
-
-
-
-
-
-
-        # return markdown.markdown(text)
-
-    
-
-    # def __markdown2html(self, text):
-    #     """Convert markdown file to html"""
-    #     return markdown.markdown(text, extensions=[GithubFlavoredMarkdownExtension()])
-
-
-
-
-
-    # def gfm(self, text):
-    #     # Extract pre blocks.
-    #     extractions = {}
-    #     def pre_extraction_callback(matchobj):
-    #         digest = md5(matchobj.group(0)).hexdigest()
-    #         extractions[digest] = matchobj.group(0)
-    #         return "{gfm-extraction-%s}" % digest
-    #     pattern = re.compile(r'<pre>.*?</pre>', re.MULTILINE | re.DOTALL)
-    #     text = re.sub(pattern, pre_extraction_callback, text)
-
-    #     # Prevent foo_bar_baz from ending up with an italic word in the middle.
-    #     def italic_callback(matchobj):
-    #         s = matchobj.group(0)
-    #         if list(s).count('_') >= 2:
-    #             return s.replace('_', '\_')
-    #         return s
-    #     text = re.sub(r'^(?! {4}|\t)\w+_\w+_\w[\w_]*', italic_callback, text)
-
-    #     # In very clear cases, let newlines become <br /> tags.
-    #     def newline_callback(matchobj):
-    #         if len(matchobj.group(1)) == 1:
-    #             return matchobj.group(0).rstrip() + '  \n'
-    #         else:
-    #             return matchobj.group(0)
-    #     pattern = re.compile(r'^[\w\<][^\n]*(\n+)', re.MULTILINE)
-    #     text = re.sub(pattern, newline_callback, text)
-
-    #     # Insert pre block extractions.
-    #     def pre_insert_callback(matchobj):
-    #         return '\n\n' + extractions[matchobj.group(1)]
-    #     text = re.sub(r'{gfm-extraction-([0-9a-f]{32})\}', pre_insert_callback, text)
-
-    #     return text
-
-    
-
-
-

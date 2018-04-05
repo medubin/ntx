@@ -6,7 +6,8 @@ from components.open_file import OpenFile
 from components.header import Header
 
 class MasterComponent:
-    palette = [('header', 'light green', 'dark blue'),
+    palette = [
+    ('header', 'light green', 'dark blue'),
     ('reveal focus', 'black', 'dark cyan', 'standout'),
     ('input', 'light green', 'black' ),
     ('input cursor', 'light green', 'white', 'blink'),
@@ -36,6 +37,8 @@ class MasterComponent:
             self.palette, 
             input_filter=self.__input_filter,
             unhandled_input=self.env.input.listen)
+
+        self.loop.screen.set_terminal_properties(colors=256)
         self.loop.run()
 
     def __input_filter(self, input, raw):
