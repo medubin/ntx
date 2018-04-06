@@ -19,7 +19,10 @@ class TagsInput(BaseInput):
             else:
                 tag = list(self.store.get_tags().keys())[self.store.get_file_index()]
                 self.service.tag.open_tag(tag)
-               
+        elif input == 'left':
+            self.service.tag.leave_tag()
+        
+
                 
 
                         

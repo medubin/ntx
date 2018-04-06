@@ -28,15 +28,21 @@ class TagService(BaseService):
             self.service.file_content.view(full_path)
 
 
-
-
-
     def open_tag(self, tag):
         self.store.set_selected_tag(tag)
         tagged_files = self.store.get_tags()[tag]
         self.store.push_file_index(0)
         self.component.files.set_focus(0)
         self.component.files.content[:] = self.component.files.create_files(tagged_files)
+    
+    def leave_tag(self):
+        if not self.store.get_selected_tag():
+            return 
+            
+        self.store.pop_file_index()
+        self.store.set_selected_tag(None)
+        self.component.files.content[:] = self.component.files.create_files(self.store.get_tags().keys())
+        self.component.files.set_focus(self.store.get_file_index()) 
 
 
 
