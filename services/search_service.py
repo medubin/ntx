@@ -9,13 +9,14 @@ class SearchService(BaseService):
     
     def search_files(self, search_string):
         files = self.service.directory.all_files()
-            
+        
         matches = []
+        removal_length = len(self.store.BASE_DIRECTORY) + 1
         for file in files:
             with open(file, 'r') as f:
                 content = f.read()
                 if search_string in content:
-                    matches.append(file)
+                    matches.append(file[removal_length:])
         
         return matches
     

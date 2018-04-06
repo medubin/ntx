@@ -7,8 +7,12 @@ class BrowseInput(BaseInput):
             return
         if input == 'up':
             self.service.directory.scroll(-1)
+            full_path = self.store.get_full_directory() + '/' + self.store.selected_file_name() 
+            self.service.content.view(full_path)
         elif input == 'down':
             self.service.directory.scroll(1)
+            full_path = self.store.get_full_directory() + '/' + self.store.selected_file_name() 
+            self.service.content.view(full_path)
         elif input == 'enter' or input == 'right':
             self.service.content.open()
         elif input == 'left':
