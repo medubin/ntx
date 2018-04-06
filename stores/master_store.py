@@ -14,10 +14,16 @@ class MasterStore:
 
         self.opened_file = '' #opened file contents
         self.state = State.BROWSE 
+
+        self.__tags = {}
+        self.__selected_tag = ''
+
         
         
         self.input_state = ''
         self.search_results = []
+
+        
 
         self.set_files(self.BASE_DIRECTORY)
         
@@ -110,5 +116,19 @@ class MasterStore:
     def change_write_cursor_pos(self, velocity):
         self.__write_cursor_pos += velocity
 
+    
+    # tags
+    def get_tags(self):
+        return self.__tags
+
+    def set_tags(self, tags):
+        self.__tags = tags
+
+    #selected tag
+    def get_selected_tag(self):
+        return self.__selected_tag
+
+    def set_selected_tag(self, tag):
+        self.__selected_tag = tag
 
 

@@ -3,5 +3,6 @@ class Command:
     NEW_FOLDER = "new-folder"
     SEARCH = "search"
     DELETE = "delete"
+    TAGS = 'tags'
 
-    ALL = [NEW_NOTE, NEW_FOLDER, SEARCH, DELETE]
+    ALL = [NEW_NOTE, NEW_FOLDER, SEARCH, DELETE, TAGS]

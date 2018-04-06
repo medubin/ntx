@@ -24,6 +24,11 @@ class CommandService(BaseService):
         elif command_name == Command.SEARCH:
             self.service.search.search(command_target)
             self.service.state.search_results()
+        elif command_name == Command.TAGS:
+            self.service.tag.get()
+            self.service.state.tags()
+
+
 
     def autocomplete(self, input):
         possible_commands = list(filter(lambda x: x.startswith(input), Command.ALL))

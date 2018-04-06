@@ -36,6 +36,16 @@ class StateService(BaseService):
         self.component.files.content[:] = self.component.files.create_files(self.store.search_results)
         self.component.files.set_focus(0)
 
+    def tags(self):
+        self.store.state = State.TAGS
+        self.store.push_file_index(0)
+        self.store.set_write_buffer('')
+        self.store.input_state = ''
+        self.component.input_bar.set_text('')
+        self.component.files.content[:] = self.component.files.create_files(self.store.get_tags().keys())
+        self.component.files.set_focus(0)
+
+
     def delete(self):
         self.store.state = State.DELETE
         self.store.input_state = 'delete? (Y/n) '

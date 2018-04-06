@@ -5,5 +5,5 @@ class State:
     SEARCH_INPUT = "SEARCH_INPUT"
     SEARCH_RESULT = "SEARCH_RESULT"
     DELETE = "DELETE"
-
     COMMAND = "COMMAND"
+    TAGS = 'TAGS'

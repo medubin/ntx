@@ -45,7 +45,7 @@ class MarkdownService(BaseService):
             return text
 
         if text[0] == '[' and text[-1] == ']':
-            return (urwid.AttrSpec('#f00,bold', '', 256), text)
+            return (urwid.AttrSpec('#f00,bold', '', 256), 'tags: ' + text + '\n')
         
         return text
 
@@ -53,8 +53,7 @@ class MarkdownService(BaseService):
         headers = re.search(r'^\#+', line)
         if headers and len(headers.group(0)) < 7:
             h_number = len(headers.group(0))
-            return (urwid.AttrSpec(self.HEADER[h_number] + ',bold', '', 256),line[h_number + 1:])
+            return (urwid.AttrSpec(self.HEADER[h_number] + ',bold', '', 256), line[h_number + 1:])
         return None
 
-        
     

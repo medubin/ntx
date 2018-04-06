@@ -10,6 +10,7 @@ from services.folder_content_service import FolderContentService
 from services.content_service import ContentService
 from services.delete_service import DeleteService
 from services.command_service import CommandService
+from services.tag_service import TagService
 
 class MasterService:
     def __init__(self, env):
@@ -27,6 +28,7 @@ class MasterService:
         self.state = StateService(env)
         self.search = SearchService(env)
         self.command = CommandService(env)
+        self.tag = TagService(env)
         
     def setup(self):
         self.create.setup()
@@ -41,5 +43,6 @@ class MasterService:
         self.state.setup()
         self.search.setup()
         self.command.setup()
+        self.tag.setup()
         
         

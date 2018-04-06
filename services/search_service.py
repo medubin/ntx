@@ -8,11 +8,7 @@ class SearchService(BaseService):
 
     
     def search_files(self, search_string):
-        files = []
-        # get all files
-        for dirpath,_,filenames in os.walk(self.store.BASE_DIRECTORY):
-            for f in filenames:
-                files.append(os.path.abspath(os.path.join(dirpath, f)))
+        files = self.service.directory.all_files()
             
         matches = []
         for file in files:
@@ -23,5 +19,4 @@ class SearchService(BaseService):
         
         return matches
     
-    # def open_search_result(self, file):
         
