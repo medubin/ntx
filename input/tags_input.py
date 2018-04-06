@@ -7,10 +7,10 @@ class TagsInput(BaseInput):
 
         if input == 'up':
             self.service.directory.scroll(-1)
-            self.service.tag.view_tag_files()
+            self.service.tag.view()
         elif input == 'down':
             self.service.directory.scroll(1)
-            self.service.tag.view_tag_files()
+            self.service.tag.view()
         elif input == 'enter' or input == 'right':
             if (self.store.get_selected_tag()):
                 file = self.store.get_tags()[self.store.get_selected_tag()][self.store.get_file_index()]
