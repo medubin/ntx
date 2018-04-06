@@ -5,4 +5,5 @@ class BaseInput:
     def setup(self):
         self.store = self.env.store
         self.service = self.env.service
+        self.component = self.env.component
         self.env = None

@@ -2,22 +2,22 @@ from base.base_service import BaseService
 
 class InputService(BaseService):
     def push(self, input):
-        self.store.push_write_buffer(input)
-        self.component.input_bar.set_text(self.store.get_write_buffer())
+        self.component.input_bar.push_text(input)
+        self.component.input_bar.set_display(self.component.input_bar.get_text())
     
     def pop(self):
-        self.store.pop_write_buffer()
-        self.component.input_bar.set_text(self.store.get_write_buffer())
+        self.component.input_bar.pop_text()
+        self.component.input_bar.set_display(self.component.input_bar.get_text())
 
     def insert(self, char):
-        pos = len(self.store.get_write_buffer()) - self.store.get_write_cursor_pos()
-        self.store.insert_write_buffer(char, pos)
-        self.component.input_bar.set_text(self.store.get_write_buffer())
+        pos = len(self.component.input_bar.get_text()) -  self.component.input_bar.get_pos()
+        self.component.input_bar.insert_text(char, pos)
+        self.component.input_bar.set_display(self.component.input_bar.get_text())
     
     def splice(self):
-        pos = len(self.store.get_write_buffer()) - self.store.get_write_cursor_pos()
-        self.store.splice_write_buffer(pos)
-        self.component.input_bar.set_text(self.store.get_write_buffer())
+        pos = len(self.component.input_bar.get_text()) - self.component.input_bar.get_pos()
+        self.component.input_bar.splice_text(pos)
+        self.component.input_bar.set_display(self.component.input_bar.get_text())
 
 
     def is_title_character(self, input):
@@ -30,9 +30,9 @@ class InputService(BaseService):
         )
 
     def change_write_cursor_pos(self, velocity):
-        if 0 <= (self.store.get_write_cursor_pos() + velocity) <= len(self.store.get_write_buffer()):
-            self.store.change_write_cursor_pos(velocity)
-            self.component.input_bar.set_text(self.store.get_write_buffer())
+        if 0 <= (self.component.input_bar.get_pos() + velocity) <= len(self.component.input_bar.get_text()):
+            self.component.input_bar.change_pos(velocity)
+            self.component.input_bar.set_display(self.component.input_bar.get_text())
 
 
 
