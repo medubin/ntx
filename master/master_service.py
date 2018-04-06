@@ -3,7 +3,7 @@ from services.create_service import CreateService
 from services.editor_service import EditorService
 from services.file_content_service import FileContentService
 from services.search_service import SearchService
-from services.markdown_service import MarkdownService
+# from services.markdown_service import MarkdownService
 from services.state_service import StateService
 from services.input_service import InputService
 from services.folder_content_service import FolderContentService
@@ -24,7 +24,7 @@ class MasterService:
         self.file_content = FileContentService(env)
         self.folder_content = FolderContentService(env)
         self.input = InputService(env)
-        self.markdown = MarkdownService(env)
+        # self.markdown = MarkdownService(env)
         self.state = StateService(env)
         self.search = SearchService(env)
         self.command = CommandService(env)
@@ -39,7 +39,7 @@ class MasterService:
         self.file_content.setup()
         self.folder_content.setup()
         self.input.setup()
-        self.markdown.setup()
+        # self.markdown.setup()
         self.state.setup()
         self.search.setup()
         self.command.setup()
