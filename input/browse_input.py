@@ -7,24 +7,16 @@ class BrowseInput(BaseInput):
             return
         if input == 'up':
             self.service.directory.scroll(-1)
-            full_path = self.store.get_full_directory() + '/' + self.store.selected_file_name() 
+            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name() 
             self.service.content.view(full_path)
         elif input == 'down':
             self.service.directory.scroll(1)
-            full_path = self.store.get_full_directory() + '/' + self.store.selected_file_name() 
+            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name() 
             self.service.content.view(full_path)
         elif input == 'enter' or input == 'right':
             self.service.content.open()
         elif input == 'left':
             self.service.folder_content.close()
-        # elif input == 'n':
-        #     self.service.state.new_note()
-        # elif input == 'N':
-        #     self.service.state.new_folder()
-        # elif input == 'g':
-        #     self.service.state.search()
-        # elif input == 'd':
-        #     self.service.state.delete()
         elif input == 'i':
             self.service.state.command()
         elif input[0] == 'mouse press':

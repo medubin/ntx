@@ -12,13 +12,13 @@ class CommandService(BaseService):
             command_target = ''
 
         if command_name == Command.NEW_NOTE:
-            full_path = self.store.get_full_directory() + '/' + command_target
+            full_path = self.component.navigation.get_full_directory() + '/' + command_target
             self.service.create.note(full_path)
         elif command_name == Command.NEW_FOLDER:
-            full_path = self.store.get_full_directory() + '/' + command_target
+            full_path = self.component.navigation.get_full_directory() + '/' + command_target
             self.service.create.folder(full_path)
         elif command_name == Command.DELETE:
-            full_path = self.store.get_full_directory() + '/' + self.store.selected_file_name()
+            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name()
             self.service.delete.folder_or_note(full_path)
             self.service.state.browse()
         elif command_name == Command.SEARCH:

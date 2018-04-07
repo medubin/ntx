@@ -13,11 +13,11 @@ class TagsInput(BaseInput):
             self.service.tag.view()
         elif input == 'enter' or input == 'right':
             if (self.store.get_selected_tag()):
-                file = self.store.get_tags()[self.store.get_selected_tag()][self.store.get_file_index()]
-                full_path = self.store.BASE_DIRECTORY + '/' + file
+                file = self.store.get_tags()[self.store.get_selected_tag()][self.component.navigation.get_file_index()]
+                full_path = self.component.navigation.BASE_DIRECTORY + '/' + file
                 self.service.editor.edit_file(full_path)
             else:
-                tag = list(self.store.get_tags().keys())[self.store.get_file_index()]
+                tag = list(self.store.get_tags().keys())[self.component.navigation.get_file_index()]
                 self.service.tag.open_tag(tag)
         elif input == 'left':
             self.service.tag.leave_tag()
@@ -27,7 +27,7 @@ class TagsInput(BaseInput):
 
                         
         elif input == 'esc':
-            self.store.pop_file_index()
+            self.component.navigation.pop_file_index()
             self.service.state.browse()
         
   

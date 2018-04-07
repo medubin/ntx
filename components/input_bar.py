@@ -25,7 +25,21 @@ class InputBar:
         self.widget.set_text([self.env.store.input_state, display])
 
 
+    def scroll(self, velocity):
+        if 0 <= (self.get_pos() + velocity) <= len(self.get_text()):
+            self.change_pos(velocity)
+            self.set_display(self.get_text())
     
+    def insert_char(self, char):
+        self.insert_text(char, self.get_pos_from_front())
+        self.set_display(self.get_text())
+
+    def splice_char(self):
+        self.splice_text(self.get_pos_from_front())
+        self.set_display(self.get_text())
+
+
+
     # REGION GETTERS AND SETTER
 
     #text
@@ -52,9 +66,12 @@ class InputBar:
 
 
 
-    #write cursor pos
+    #pos
     def get_pos(self):
         return self.__pos
+    
+    def get_pos_from_front(self):
+        return len(self.get_text()) -  self.get_pos()
     
     def set_pos(self, pos):
         self.__pos = pos

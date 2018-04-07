@@ -7,7 +7,7 @@ class ContentService(BaseService):
         if not file:
             return
 
-        full_path = self.store.get_full_directory() + '/' + file
+        full_path = self.component.navigation.get_full_directory() + '/' + file
         if not os.path.isdir(full_path):
             self.service.editor.edit_file(full_path)
         else:
