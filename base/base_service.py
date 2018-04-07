@@ -4,7 +4,6 @@ class BaseService:
         self.env = env
     
     def setup(self):
-        self.store = self.env.store
         self.component = self.env.component
         self.service = self.env.service
         self.env = None

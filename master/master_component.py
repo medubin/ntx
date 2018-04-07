@@ -4,6 +4,7 @@ from components.navigation import Navigation
 from components.input_bar import InputBar
 from components.display import Display
 from components.header import Header
+from constants.state import State
 
 class MasterComponent:
     palette = [
@@ -16,6 +17,8 @@ class MasterComponent:
 
     def __init__(self, env):
         self.env = env
+        self.__state = State.BROWSE 
+
         self.navigation = Navigation(self.env)
         self.header = Header(self.env)
         self.input_bar = InputBar(self.env)
@@ -43,5 +46,14 @@ class MasterComponent:
 
     def __input_filter(self, input, raw):
         return input
+
+
+    #Getters and Setters
+    def get_state(self):
+        return self.__state
+
+    def set_state(self, state):
+        self.__state = state
+
 
         

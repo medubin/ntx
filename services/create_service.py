@@ -17,9 +17,3 @@ class CreateService(BaseService):
         if not os.path.isdir(folderpath):
             os.makedirs(folderpath)
         self.service.state.browse()
-
-    def folder_or_note(self, full_path):
-        if self.store.state == State.NEW_FILE: 
-            self.note(full_path)
-        elif self.store.state == State.NEW_FOLDER:
-            self.folder(full_path)

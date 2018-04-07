@@ -20,7 +20,7 @@ class MasterInput:
 
 
     def listen(self, input):
-        state = self.env.store.state #freeze the state to prevent ordering errors
+        state = self.env.component.get_state() #freeze the state to prevent ordering errors
         self.browse.listen(input, state)
         self.search_result.listen(input, state)
         self.command.listen(input, state)

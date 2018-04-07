@@ -6,6 +6,7 @@ class InputBar:
 
         self.__text = ''
         self.__pos = 0 #distance from the end
+        self.__prefix = ''
 
     def __render(self):
         return urwid.Text(('input', u''))
@@ -22,7 +23,7 @@ class InputBar:
         else:
             display = [('input', text[:cursor_pos_from_left]), ('input cursor', text[cursor_pos_from_left]), ('input', text[cursor_pos_from_left + 1:])]  
 
-        self.widget.set_text([self.env.store.input_state, display])
+        self.widget.set_text([self.get_prefix(), display])
 
 
     def scroll(self, velocity):
@@ -63,6 +64,13 @@ class InputBar:
             return
             
         self.__text = self.__text[:pos - 1] + self.__text[pos:]
+
+    #prefix
+    def get_prefix(self):
+        return self.__prefix
+
+    def set_prefix(self, prefix):
+        self.__prefix = prefix
 
 
 
