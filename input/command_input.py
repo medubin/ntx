@@ -10,7 +10,7 @@ class CommandInput(BaseInput):
         elif input == 'backspace':
             self.service.input.splice()
         elif input == 'enter':
-            self.service.command.interpret(self.component.input.get_text())
+            self.service.command.interpret(self.component.input_bar.get_text())
         elif input == 'left':
             self.service.input.change_write_cursor_pos(1)
         elif input == 'right':
@@ -18,7 +18,7 @@ class CommandInput(BaseInput):
         elif input == 'esc':
             self.service.state.browse()
         elif input == 'tab':
-            self.service.command.autocomplete(self.component.input.get_text())
+            self.service.command.autocomplete(self.component.input_bar.get_text())
 
 
     
