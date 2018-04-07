@@ -6,7 +6,7 @@ class StateService(BaseService):
         self.store.state = State.BROWSE 
         self.component.input_bar.set_text('')
         self.store.input_state = ''
-        self.component.navigation.set_files(self.component.navigation.get_full_directory())
+        self.component.navigation.set_files_from_directory(self.component.navigation.get_full_directory())
         self.component.input_bar.set_display('')
         self.component.navigation.content[:] = self.component.navigation.create_files(self.component.navigation.get_files())
         self.component.navigation.set_focus(self.component.navigation.get_file_index())
@@ -17,7 +17,7 @@ class StateService(BaseService):
         self.component.input_bar.set_text('')
         self.store.input_state = ''
         self.component.input_bar.set_display('')
-        self.component.navigation.content[:] = self.component.navigation.create_files(self.store.search_results)
+        self.component.navigation.content[:] = self.component.navigation.create_files(self.component.navigation.get_files())
         self.component.navigation.set_focus(0)
 
     def tags(self):
@@ -26,7 +26,8 @@ class StateService(BaseService):
         self.component.input_bar.set_text('')
         self.store.input_state = ''
         self.component.input_bar.set_display('')
-        self.component.navigation.content[:] = self.component.navigation.create_files(self.store.get_tags().keys())
+        self.component.navigation.set_files(list(self.component.navigation.get_tags().keys()))
+        self.component.navigation.content[:] = self.component.navigation.create_files(self.component.navigation.get_files())
         self.component.navigation.set_focus(0)
 
     def command(self):

@@ -18,7 +18,7 @@ class CommandService(BaseService):
             full_path = self.component.navigation.get_full_directory() + '/' + command_target
             self.service.create.folder(full_path)
         elif command_name == Command.DELETE:
-            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name()
+            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.get_selected_file_name()
             self.service.delete.folder_or_note(full_path)
             self.service.state.browse()
         elif command_name == Command.SEARCH:

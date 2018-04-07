@@ -12,12 +12,12 @@ class TagsInput(BaseInput):
             self.component.navigation.scroll(1)
             self.service.tag.view()
         elif input == 'enter' or input == 'right':
-            if (self.store.get_selected_tag()):
-                file = self.store.get_tags()[self.store.get_selected_tag()][self.component.navigation.get_file_index()]
+            if (self.component.navigation.get_selected_tag()):
+                file = self.component.navigation.get_tags()[self.component.navigation.get_selected_tag()][self.component.navigation.get_file_index()]
                 full_path = self.component.navigation.BASE_DIRECTORY + '/' + file
                 self.service.editor.edit_file(full_path)
             else:
-                tag = list(self.store.get_tags().keys())[self.component.navigation.get_file_index()]
+                tag = self.component.navigation.get_selected_file_name()
                 self.service.tag.open_tag(tag)
         elif input == 'left':
             self.service.tag.leave_tag()

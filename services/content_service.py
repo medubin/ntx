@@ -3,7 +3,7 @@ from base.base_service import BaseService
 class ContentService(BaseService):
     
     def open(self):
-        file = self.store.selected_file_name()
+        file = self.component.navigation.get_selected_file_name()
         if not file:
             return
 

@@ -12,8 +12,10 @@ class Navigation(BaseComponent):
         self.__file_indices = [0]
         self.__files = []
         self.__directory = ''
+        self.__tags = {}
+        self.__selected_tag = ''
 
-        self.set_files(self.BASE_DIRECTORY)
+        self.set_files_from_directory(self.BASE_DIRECTORY)
 
         self.content = urwid.SimpleFocusListWalker(self.create_files(self.get_files()))
         self.widget = self.__render()
@@ -68,8 +70,11 @@ class Navigation(BaseComponent):
     # files
     def get_files(self):
         return self.__files
+
+    def set_files(self, files):
+        self.__files = files
     
-    def set_files(self, directory):
+    def set_files_from_directory(self, directory):
         folders = []
         notes = []
 
@@ -85,7 +90,7 @@ class Navigation(BaseComponent):
             
         self.__files = sorted(folders) + sorted(notes)
 
-    def selected_file_name(self):
+    def get_selected_file_name(self):
         if self.get_file_index() < len(self.__files): 
             return self.__files[self.get_file_index()]
         return None
@@ -104,6 +109,22 @@ class Navigation(BaseComponent):
     
     def change_file_index(self, velocity):
         self.__file_indices[-1] += velocity
+
+      
+    # tags
+    def get_tags(self):
+        return self.__tags
+
+    def set_tags(self, tags):
+        self.__tags = tags
+
+    #selected tag
+    def get_selected_tag(self):
+        return self.__selected_tag
+
+    def set_selected_tag(self, tag):
+        self.__selected_tag = tag
+
 
 
 # overrides the keypress which has some weird behavior in urwid.

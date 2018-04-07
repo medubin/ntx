@@ -7,11 +7,11 @@ class BrowseInput(BaseInput):
             return
         if input == 'up':
             self.component.navigation.scroll(-1)
-            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name() 
+            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.get_selected_file_name() 
             self.service.content.view(full_path)
         elif input == 'down':
             self.component.navigation.scroll(1)
-            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name() 
+            full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.get_selected_file_name() 
             self.service.content.view(full_path)
         elif input == 'enter' or input == 'right':
             self.service.content.open()
