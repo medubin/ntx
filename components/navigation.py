@@ -43,6 +43,11 @@ class Navigation(BaseComponent):
         if len(self.content):
             self.widget.set_focus(focus)
 
+    def scroll(self, direction):
+        if 0 <= (self.get_file_index() + direction) <= len(self.get_files()) - 1:
+            self.change_file_index(direction)
+            self.set_focus(self.get_file_index())
+
 
 
     # Getters and Setters

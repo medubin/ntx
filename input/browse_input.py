@@ -6,11 +6,11 @@ class BrowseInput(BaseInput):
         if state != State.BROWSE:
             return
         if input == 'up':
-            self.service.directory.scroll(-1)
+            self.component.navigation.scroll(-1)
             full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name() 
             self.service.content.view(full_path)
         elif input == 'down':
-            self.service.directory.scroll(1)
+            self.component.navigation.scroll(1)
             full_path = self.component.navigation.get_full_directory() + '/' + self.component.navigation.selected_file_name() 
             self.service.content.view(full_path)
         elif input == 'enter' or input == 'right':
@@ -21,8 +21,8 @@ class BrowseInput(BaseInput):
             self.service.state.command()
         elif input[0] == 'mouse press':
             if input[1] == 4.0:
-                self.service.directory.scroll(-1)
+                self.component.navigation.scroll(-1)
             elif input[1] == 5.0:
-                self.service.directory.scroll(1)
+                self.component.navigation.scroll(1)
 
             

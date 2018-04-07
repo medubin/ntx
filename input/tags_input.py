@@ -6,10 +6,10 @@ class TagsInput(BaseInput):
             return
 
         if input == 'up':
-            self.service.directory.scroll(-1)
+            self.component.navigation.scroll(-1)
             self.service.tag.view()
         elif input == 'down':
-            self.service.directory.scroll(1)
+            self.component.navigation.scroll(1)
             self.service.tag.view()
         elif input == 'enter' or input == 'right':
             if (self.store.get_selected_tag()):
@@ -21,11 +21,7 @@ class TagsInput(BaseInput):
                 self.service.tag.open_tag(tag)
         elif input == 'left':
             self.service.tag.leave_tag()
-        
-
-                
-
-                        
+                      
         elif input == 'esc':
             self.component.navigation.pop_file_index()
             self.service.state.browse()
