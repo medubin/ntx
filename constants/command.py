@@ -4,5 +4,6 @@ class Command:
     SEARCH = "search"
     DELETE = "delete"
     TAGS = 'tags'
+    EXIT = 'exit'
 
-    ALL = [NEW_NOTE, NEW_FOLDER, SEARCH, DELETE, TAGS]
+    ALL = [NEW_NOTE, NEW_FOLDER, SEARCH, DELETE, TAGS, EXIT]

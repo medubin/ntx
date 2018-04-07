@@ -7,7 +7,7 @@ browser.startup()
 
 try:
     browser.run()
-except KeyboardInterrupt:
+except (KeyboardInterrupt, SystemExit) as e:
     browser.exit()
 
 

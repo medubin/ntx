@@ -2,6 +2,7 @@
 from base.base_service import BaseService
 from constants.command import Command
 import os
+import sys
 class CommandService(BaseService):
     def interpret(self, command):
         parsed = command.split(' ')
@@ -27,6 +28,9 @@ class CommandService(BaseService):
         elif command_name == Command.TAGS:
             self.service.tag.get()
             self.service.state.tags()
+        elif command_name == Command.EXIT:
+            sys.exit()
+
 
 
 
