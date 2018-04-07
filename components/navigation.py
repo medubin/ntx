@@ -93,7 +93,7 @@ class Navigation(BaseComponent):
     def get_selected_file_name(self):
         if self.get_file_index() < len(self.__files): 
             return self.__files[self.get_file_index()]
-        return None
+        return ''
 
 
 
