@@ -8,7 +8,12 @@ class Browser:
         self.env.service.create.base_folder()
 
     def run(self):
+        full_path = self.env.component.navigation.get_full_directory() + '/' + self.env.component.navigation.get_selected_file_name() 
+        self.env.service.content.view(full_path)
         self.env.component.run()
+        
+        # print(full_path)
+        
     
     def exit(self):
         print('exiting. goodbye.')

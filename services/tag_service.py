@@ -9,6 +9,7 @@ class TagService(BaseService):
         base_directory = self.component.navigation.BASE_DIRECTORY
         tags = tag_helper.search_tags(files,  base_directory)
         self.component.navigation.set_tags(tags)
+       
     
     def view(self):
         if self.component.navigation.get_selected_tag():

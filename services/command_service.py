@@ -25,13 +25,14 @@ class CommandService(BaseService):
         elif command_name == Command.SEARCH:
             self.service.search.search(command_target)
             self.service.state.search_results()
+            full_path = self.component.navigation.BASE_DIRECTORY + '/' + self.component.navigation.get_selected_file_name()
+            self.service.content.view(full_path)
         elif command_name == Command.TAGS:
             self.service.tag.get()
             self.service.state.tags()
+            self.service.tag.view()
         elif command_name == Command.EXIT:
             sys.exit()
-
-
 
 
     def autocomplete(self, input):
