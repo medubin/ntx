@@ -1,7 +1,7 @@
 import urwid
 
 from components.navigation import Navigation
-from components.input_bar import InputBar
+from components.input import Input
 from components.display import Display
 from components.header import Header
 from constants.state import State
@@ -21,18 +21,14 @@ class MasterComponent:
 
         self.navigation = Navigation(self.env)
         self.header = Header(self.env)
-        self.input_bar = InputBar(self.env)
+        self.input = Input(self.env)
         self.display = Display(self.env)
     
-    # def setup(self):
-    #     self.files.setup()
-    #     self.header.setup()
-    #     self.input_bar.setup()
-    #     self.open_file.setup()
+
     
     def render(self):
         columns = urwid.Columns([self.navigation.widget, urwid.Filler(self.display.widget, valign='top')])
-        return urwid.Frame(columns, self.header.widget, self.input_bar.widget)
+        return urwid.Frame(columns, self.header.widget, self.input.widget)
 
     def run(self):
         self.loop = urwid.MainLoop(

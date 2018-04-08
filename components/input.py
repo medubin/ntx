@@ -1,5 +1,5 @@
 import urwid
-class InputBar:
+class Input:
     def __init__(self, env):
         self.env = env
         self.widget = self.__render()

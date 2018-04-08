@@ -39,5 +39,5 @@ class CommandService(BaseService):
         possible_commands = list(filter(lambda x: x.startswith(input), Command.ALL))
 
         if len(possible_commands) > 0:
-             self.component.input_bar.set_text(os.path.commonprefix(possible_commands))
-             self.component.input_bar.set_display(self.component.input_bar.get_text())
+             self.component.input.set_text(os.path.commonprefix(possible_commands))
+             self.component.input.set_display(self.component.input.get_text())
