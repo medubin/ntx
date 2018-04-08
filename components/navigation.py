@@ -82,6 +82,8 @@ class Navigation(BaseComponent):
 
 
         for file in all_files:
+            if file.startswith('.'):
+                continue
             full_path = self.get_full_directory() + '/' + file
             if os.path.isdir(full_path):
                 folders.append(file)

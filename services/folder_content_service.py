@@ -1,8 +1,10 @@
 import os
+
 from base.base_service import BaseService
 class FolderContentService(BaseService):
     def view(self, folder):
-        self.component.display.set_text('\n'.join(os.listdir(folder)))
+        content = sorted([f for f in os.listdir(folder)], key=lambda f: f.lower())
+        self.component.display.set_text('\n'.join(content))
         self.component.display.set_display()
 
     def open(self, folder):
