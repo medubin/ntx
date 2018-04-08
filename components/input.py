@@ -11,6 +11,12 @@ class Input:
     def __render(self):
         return urwid.Text(('input', u''))
 
+    def reset(self, text='', prefix='', pos=0):
+        self.set_text(text)
+        self.set_prefix(prefix)
+        self.set_pos(pos)
+        self.set_display(text)
+
     def set_display(self, text):
         cursor_pos_from_left = len(text) - self.__pos
 
