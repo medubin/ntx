@@ -1,5 +1,6 @@
 import urwid
 import os
+import helpers.directory_helper as directory_helper
 from pathlib import Path
 from base.base_component import BaseComponent
 
@@ -80,10 +81,9 @@ class Navigation(BaseComponent):
 
         all_files = os.listdir(directory)
 
+        all_files = directory_helper.filter_hidden(all_files)
 
         for file in all_files:
-            if file.startswith('.'):
-                continue
             full_path = self.get_full_directory() + '/' + file
             if os.path.isdir(full_path):
                 folders.append(file)

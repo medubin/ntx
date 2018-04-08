@@ -1,9 +1,10 @@
 import os
+import helpers.directory_helper as directory_helper
 
 from base.base_service import BaseService
 class FolderContentService(BaseService):
     def view(self, folder):
-        content = sorted([f for f in os.listdir(folder)], key=lambda f: f.lower())
+        content = directory_helper.get_files_in_folder(folder)
         self.component.display.set_text('\n'.join(content))
         self.component.display.set_display()
 

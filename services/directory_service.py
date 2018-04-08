@@ -1,6 +1,7 @@
 
 from pathlib import Path
 import os
+import helpers.directory_helper as directory_helper
 from base.base_service import BaseService
 
 class DirectoryService(BaseService):
@@ -8,12 +9,7 @@ class DirectoryService(BaseService):
         files = []
         # get all files
         for dirpath,_,filenames in os.walk(self.component.navigation.BASE_DIRECTORY):
-            for f in filenames:
+            for f in directory_helper.filter_hidden(filenames):
                 files.append(os.path.abspath(os.path.join(dirpath, f)))
         
         return files
-
-
-
-
-

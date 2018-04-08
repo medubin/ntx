@@ -1,8 +1,8 @@
+import helpers.directory_helper as directory_helper
 def search_tags(files, base_directory):
-    
-        
     all_tags = {}
     removal_length = len(base_directory) + 1
+    files = directory_helper.filter_hidden(files)
     for file in files:
         with open(file, 'r') as f:
             first_line = f.readline() #just the first line

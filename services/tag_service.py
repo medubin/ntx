@@ -7,7 +7,7 @@ class TagService(BaseService):
     def get(self):
         files = self.service.directory.all_files()
         base_directory = self.component.navigation.BASE_DIRECTORY
-        tags = tag_helper.search_tags(files,  base_directory)
+        tags = tag_helper.search_tags(files, base_directory)
         self.component.navigation.set_tags(tags)
        
     
