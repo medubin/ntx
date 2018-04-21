@@ -1,2 +1,6 @@
 /**/*__pycache__
 /.vscode
+/.env
+/ntx.egg-info
+/dist
+/build
