@@ -31,13 +31,20 @@ class MarkdownParser:
         # return markdown.markdown(text)
         self.reset_state()
         self.text = text
-        self.text = self.add_escape_characters()
+        self.highlight_tags()
+        self.add_escape_characters()
         self.text = markdown.markdown(self.text)
         self.format_html()
         
-        # return markdown.markdown(text)
-        # return highlight(text, MarkdownLexer(), HtmlFormatter())
         return self.all_text
+
+    def highlight_tags(self):
+        text = self.text.split('\n')
+        first_line = text[0]
+
+        if first_line[0] == '[' and first_line[-1] == ']':
+            self.all_text.append((urwid.AttrSpec('#f00,bold', '', 256), 'tags: ' + first_line[1:-2] + '\n'))
+            self.text = '\n'.join(text[1:])
 
     def add_escape_characters(self):
         new_text = ''
@@ -47,7 +54,7 @@ class MarkdownParser:
             else:
                 new_text += char
         
-        return new_text
+        self.text = new_text
 
     def format_html(self):
         while self.pos < len(self.text):
