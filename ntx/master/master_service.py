@@ -3,7 +3,7 @@ from ntx.services.create_service import CreateService
 from ntx.services.editor_service import EditorService
 from ntx.services.file_content_service import FileContentService
 from ntx.services.search_service import SearchService
-# from ntx.services.markdown_service import MarkdownService
+from ntx.services.markdown_parser import MarkdownParser
 from ntx.services.state_service import StateService
 from ntx.services.input_service import InputService
 from ntx.services.folder_content_service import FolderContentService
@@ -24,11 +24,12 @@ class MasterService:
         self.file_content = FileContentService(env)
         self.folder_content = FolderContentService(env)
         self.input = InputService(env)
-        # self.markdown = MarkdownService(env)
         self.state = StateService(env)
         self.search = SearchService(env)
         self.command = CommandService(env)
         self.tag = TagService(env)
+
+        self.markdown = MarkdownParser()
         
     def setup(self):
         self.create.setup()
@@ -39,7 +40,6 @@ class MasterService:
         self.file_content.setup()
         self.folder_content.setup()
         self.input.setup()
-        # self.markdown.setup()
         self.state.setup()
         self.search.setup()
         self.command.setup()
