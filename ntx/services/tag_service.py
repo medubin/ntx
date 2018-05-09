@@ -25,8 +25,7 @@ class TagService(BaseService):
         self.component.display.widget.set_text(tagged_files)
 
     def view_file(self):
-        tag = list(self.component.navigation.get_tags().keys())[self.component.navigation.get_file_index()]
-        tagged_files = self.component.navigation.get_tags()[tag]
+        tagged_files = self.component.navigation.get_files()
         file = tagged_files[self.component.navigation.get_file_index()]
         full_path = self.component.navigation.BASE_DIRECTORY + '/' + file
         self.service.file_content.view(full_path)
