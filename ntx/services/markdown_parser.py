@@ -12,7 +12,6 @@ HEADER = {
 }
 
 
-
 class MarkdownParser:
     def __init__(self):
         self.text = ''
@@ -24,6 +23,8 @@ class MarkdownParser:
         self.header = 0
         self.italic = 0
         self.bold = 0
+        self.list = 0
+        self.in_list_item = False
 
     def parse(self, text):
         if text == '':
@@ -60,10 +61,12 @@ class MarkdownParser:
         while self.pos < len(self.text):
             if self.skip:
                 self.skip = False
-
-            
+                self.current_text_block += self.text[self.pos]
+            elif self.text[self.pos] == '/':
+                self.skip = True
             elif self.text[self.pos] == '<':
                 self.get_tag()
+                self.tag_modify_text()
                 self.style_section()
                 self.implement_tag()
                 self.clear_after_tag()
@@ -71,8 +74,6 @@ class MarkdownParser:
             else:
                 self.current_text_block += self.text[self.pos]
 
-
-            
             self.pos += 1
 
     def get_tag(self,):
@@ -112,13 +113,11 @@ class MarkdownParser:
         self.header = 0
         self.italic = 0
         self.bold = 0
+        self.list = 0
+        self.in_list_item = False
 
     def implement_tag(self):
-        if self.tag == '<p>':
-            return
-        elif self.tag == '</p>':
-            self.text += "\n"
-        elif self.tag == '<em>':
+        if self.tag == '<em>':
             self.italic += 1
         elif self.tag == '</em>':
             self.italic -= 1
@@ -130,3 +129,35 @@ class MarkdownParser:
             self.header = int(self.tag[2])
         elif self.tag.startswith('</h'):
             self.header = 0
+        elif self.tag == '<ul>':
+            self.list += 1
+        elif self.tag == '</ul>':
+            self.list -= 1
+        elif self.tag == '<li>':
+            self.in_list_item = True
+        elif self.tag == '</li>':
+            self.in_list_item = False
+
+        
+    def tag_modify_text(self):
+        if self.tag == '<li>':
+            self.current_text_block += '• ' if self.list == 1 else '    • '
+            self.strip_excess_newlines()            
+        elif self.tag == '</li>':
+            self.strip_excess_newlines()
+        elif self.tag == '</ul>':
+            self.strip_excess_newlines()
+        elif self.tag == '<ul>':
+            self.strip_excess_newlines()
+        elif self.tag == '</p>':
+            if not self.in_list_item:
+                self.current_text_block += "\n"
+        if self.tag == '<p>':
+            if self.in_list_item:
+                self.strip_excess_newlines()
+
+
+    def strip_excess_newlines(self):
+        if self.current_text_block and self.current_text_block[-1] == "\n":
+            self.current_text_block = self.current_text_block[0:-1] 
+
