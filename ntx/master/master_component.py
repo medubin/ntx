@@ -39,7 +39,8 @@ class MasterComponent:
             self.render(), 
             self.palette, 
             input_filter=self.__input_filter,
-            unhandled_input=self.env.input.listen)
+            unhandled_input=self.env.input.listen,
+            )
 
         self.loop.screen.set_terminal_properties(colors=256)
         self.loop.run()

@@ -6,7 +6,6 @@ class FolderContentService(BaseService):
     def view(self, folder):
         content = directory_helper.get_files_in_folder(folder)
         self.component.display.set_text('\n'.join(content))
-        self.component.display.set_display()
 
     def open(self, folder):
         self.component.navigation.push_directory(folder)
