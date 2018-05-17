@@ -18,7 +18,6 @@ class Display(BaseComponent):
         self.widget.set_text(self.__text or '')
 
 
-
     def get_text(self):
         return self.__text
 

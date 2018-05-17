@@ -15,19 +15,19 @@ class Input:
         self.set_text(text)
         self.set_prefix(prefix)
         self.set_pos(pos)
-        self.set_display(text)
+        self.update_display()
 
-    def set_display(self, text):
-        cursor_pos_from_left = len(text) - self.__pos
+    def update_display(self):
+        cursor_pos_from_left = len(self.__text) - self.__pos
 
-        if len(text) == 0:
+        if len(self.__text) == 0:
             display = ('input cursor', ' ')
         elif self.__pos == 0:
-            display = [('input', text), ('input cursor', ' ')]      
+            display = [('input', self.__text), ('input cursor', ' ')]      
         elif cursor_pos_from_left == 0:
-            display = [('input cursor', text[cursor_pos_from_left]), ('input', text[cursor_pos_from_left + 1:])]  
+            display = [('input cursor', self.__text[cursor_pos_from_left]), ('input', self.__text[cursor_pos_from_left + 1:])]  
         else:
-            display = [('input', text[:cursor_pos_from_left]), ('input cursor', text[cursor_pos_from_left]), ('input', text[cursor_pos_from_left + 1:])]  
+            display = [('input', self.__text[:cursor_pos_from_left]), ('input cursor', self.__text[cursor_pos_from_left]), ('input', self.__text[cursor_pos_from_left + 1:])]  
 
         self.widget.set_text([self.get_prefix(), display])
 
@@ -35,15 +35,15 @@ class Input:
     def scroll(self, velocity):
         if 0 <= (self.get_pos() + velocity) <= len(self.get_text()):
             self.change_pos(velocity)
-            self.set_display(self.get_text())
+            self.update_display()
     
     def insert_char(self, char):
         self.insert_text(char, self.get_pos_from_front())
-        self.set_display(self.get_text())
+        self.update_display()
 
     def splice_char(self):
         self.splice_text(self.get_pos_from_front())
-        self.set_display(self.get_text())
+        self.update_display()
 
 
 

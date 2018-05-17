@@ -42,4 +42,4 @@ class CommandService(BaseService):
 
         if len(possible_commands) > 0:
              self.component.input.set_text(os.path.commonprefix(possible_commands))
-             self.component.input.set_display(self.component.input.get_text())
+             self.component.input.update_display()
