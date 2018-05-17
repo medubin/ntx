@@ -8,7 +8,7 @@ class CommandService(BaseService):
         parsed = command.split(' ')
         command_name = parsed[0]
         if len(parsed) > 1:
-            command_target = parsed[1]
+            command_target = ' '.join(parsed[1:])
         else:
             command_target = ''
 
