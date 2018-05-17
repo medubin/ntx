@@ -12,6 +12,8 @@ def search_tags(files, base_directory):
                 continue
 
             for tag in tags:
+                if tag == '':
+                    continue
                 if tag in all_tags:
                     all_tags[tag].append(file[removal_length:])
                 else:
