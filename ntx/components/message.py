@@ -1,9 +1,10 @@
 import urwid
 from ntx.base.base_component import BaseComponent
+from ntx.constants.messsage import Message as MessageConstant
 class Message(BaseComponent):
     def __init__(self, env):
         self.env = env
-        self.__text = ''
+        self.__text = MessageConstant.BASIC
         self.widget = self.__render()
         
     

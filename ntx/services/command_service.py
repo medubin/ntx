@@ -1,6 +1,7 @@
 
 from ntx.base.base_service import BaseService
 from ntx.constants.command import Command
+from ntx.constants.messsage import Message
 import os
 import sys
 class CommandService(BaseService):
@@ -29,6 +30,8 @@ class CommandService(BaseService):
                 self.service.content.view(full_path)
             else: 
                 self.service.state.browse()
+                self.component.message.set_text(Message.SEARCH_FAILED)
+
         elif command_name == Command.TAGS:
             self.service.tag.get()
             self.service.state.tags()

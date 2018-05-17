@@ -7,6 +7,7 @@ import ntx.helpers.search_helper as search
 
 class SearchService(BaseService):
     def search(self, search_string):
+        self.component.navigation.set_last_search(search_string)
         files = self.service.directory.all_files()
         base_directory = self.component.navigation.BASE_DIRECTORY
 

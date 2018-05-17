@@ -9,12 +9,12 @@ from ntx.constants.state import State
 
 class MasterComponent:
     palette = [
-    ('header', 'light green', 'dark blue'),
+    ('header', 'light green', 'dark blue', 'bold'),
     ('reveal focus', 'black', 'dark cyan', 'standout'),
     ('input', 'light green', 'black' ),
     ('input cursor', 'light green', 'white', 'blink'),
     ('folder', 'light green', '', 'bold'),
-    ('message', 'white', 'dark blue', 'bold')
+    ('message', 'white', 'dark blue', '')
     ]
 
     def __init__(self, env):

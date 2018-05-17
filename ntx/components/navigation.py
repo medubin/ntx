@@ -9,7 +9,7 @@ class Navigation(BaseComponent):
     def __init__(self, env):
         self.env = env
 
-
+        self.__last_search = ''
         self.__file_indices = [0]
         self.__files = []
         self.__directory = ''
@@ -126,6 +126,13 @@ class Navigation(BaseComponent):
 
     def set_selected_tag(self, tag):
         self.__selected_tag = tag
+
+    #last search
+    def get_last_search(self):
+        return self.__last_search
+
+    def set_last_search(self, search_term):
+        self.__last_search = search_term
 
 
 
