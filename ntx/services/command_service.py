@@ -23,10 +23,12 @@ class CommandService(BaseService):
             self.service.delete.folder_or_note(full_path)
             self.service.state.browse()
         elif command_name == Command.SEARCH:
-            self.service.search.search(command_target)
-            self.service.state.search_results()
-            full_path = self.component.navigation.BASE_DIRECTORY + '/' + self.component.navigation.get_selected_file_name()
-            self.service.content.view(full_path)
+            if self.service.search.search(command_target):
+                self.service.state.search_results()
+                full_path = self.component.navigation.BASE_DIRECTORY + '/' + self.component.navigation.get_selected_file_name()
+                self.service.content.view(full_path)
+            else: 
+                self.service.state.browse()
         elif command_name == Command.TAGS:
             self.service.tag.get()
             self.service.state.tags()

@@ -13,7 +13,6 @@ class StateService(BaseService):
         self.component.set_state(State.SEARCH_RESULT)
         self.component.navigation.push_file_index(0)
         self.component.input.reset()
-
         self.component.navigation.content[:] = self.component.navigation.create_files(self.component.navigation.get_files())
         self.component.navigation.set_focus(0)
 

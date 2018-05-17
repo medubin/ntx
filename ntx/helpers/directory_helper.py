@@ -4,7 +4,3 @@ def get_files_in_folder(folder):
 
 def filter_hidden(files):
     return list(filter(lambda x: not x.startswith('.'), files))
-
-
-
-

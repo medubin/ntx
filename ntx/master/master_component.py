@@ -4,6 +4,7 @@ from ntx.components.navigation import Navigation
 from ntx.components.input import Input
 from ntx.components.display import Display
 from ntx.components.header import Header
+from ntx.components.message import Message
 from ntx.constants.state import State
 
 class MasterComponent:
@@ -12,7 +13,8 @@ class MasterComponent:
     ('reveal focus', 'black', 'dark cyan', 'standout'),
     ('input', 'light green', 'black' ),
     ('input cursor', 'light green', 'white', 'blink'),
-    ('folder', 'light green', '', 'bold')
+    ('folder', 'light green', '', 'bold'),
+    ('message', 'white', 'dark blue', 'bold')
     ]
 
     def __init__(self, env):
@@ -23,12 +25,14 @@ class MasterComponent:
         self.header = Header(self.env)
         self.input = Input(self.env)
         self.display = Display(self.env)
+        self.message = Message(self.env)
     
 
     
     def render(self):
         columns = urwid.Columns([self.navigation.widget, urwid.Filler(self.display.widget, valign='top')])
-        return urwid.Frame(columns, self.header.widget, self.input.widget)
+        bottom = urwid.Pile([self.message.widget, self.input.widget])
+        return urwid.Frame(columns, self.header.widget, bottom)
 
     def run(self):
         self.loop = urwid.MainLoop(
