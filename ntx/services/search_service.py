@@ -9,7 +9,8 @@ class SearchService(BaseService):
         base_directory = self.component.navigation.BASE_DIRECTORY
 
         matches = search.search_files(search_string, files, base_directory)
-        self.component.navigation.set_files(matches)
+        if matches:
+            self.component.navigation.set_files(matches)
 
     
 
