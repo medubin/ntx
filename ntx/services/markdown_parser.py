@@ -43,7 +43,7 @@ class MarkdownParser:
         text = self.text.split('\n')
         first_line = text[0]
 
-        if first_line[0] == '[' and first_line[-1] == ']':
+        if len(first_line) != 0 and first_line[0] == '[' and first_line[-1] == ']':
             self.all_text.append((urwid.AttrSpec('#f00,bold', '', 256), 'tags: ' + first_line[1:-1] + '\n'))
             self.text = '\n'.join(text[1:])
 
